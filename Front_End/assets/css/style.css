@@ -1,0 +1,11 @@
+#navBar{
+    height: 60px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    background-color: #000;
+}
+
+#main{
+    background-color: yellow;
+    height: 80vh;
+}
