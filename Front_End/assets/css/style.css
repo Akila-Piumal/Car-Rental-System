@@ -1,11 +1,64 @@
-#navBar{
-    height: 60px;
-    backdrop-filter: blur(10px);
-    width: 100%;
-    background-color: #000;
+*{
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
-#main{
-    background-color: yellow;
-    height: 80vh;
+.links{
+    text-decoration: none;
 }
+
+
+/*===============  Home Page  ====================================*/
+
+#header{
+    backdrop-filter: blur(10px);
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo img{
+    width: 60px;
+}
+
+#navBar{
+    display: flex;
+}
+#navBar>li{
+    position: relative;
+}
+#navBar a{
+    font-size: 1rem;
+    padding-right: 40px;
+    color: white;
+    font-weight: 1000;
+}
+
+#mainSec{
+    height: 600px;
+    background: url("../img/Car Website – 1@2x.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/*Scroll bar*/
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+html::-webkit-scrollbar-track{
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb{
+    background: black;
+    border-radius: 5rem;
+}
+
+
