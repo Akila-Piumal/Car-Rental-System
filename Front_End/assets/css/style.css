@@ -18,15 +18,18 @@
     width: 100%;
     top: 0;
     right: 0;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.87);
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /*border-bottom: 4px solid #FE613C;*/
 }
 
 #logo img{
     width: 60px;
+    left: 30px;
+    position: relative;
 }
 
 #navBar{
@@ -41,12 +44,75 @@
     color: white;
     font-weight: 1000;
 }
+#navBar a::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: #FE613C;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: 0.5s;
+}
+#navBar a:hover::after{
+    width: 100%;
+}
 
 #mainSec{
-    height: 600px;
+    height: 650px;
     background: url("../img/Car Website – 1@2x.png");
     background-size: cover;
     background-position: center;
+}
+
+#textSec{
+    width: 460px;
+    margin-left: 185px;
+    padding-top: 147px;
+}
+
+.homeText{
+    font-size: 40px;
+    font-family: 'Kanit', sans-serif;
+    color: #000000d9;
+}
+#easyCarText{
+    font-size: 60px;
+    background-color: #FFCC01;
+}
+
+#circleDiv{
+    background-color: black;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    position: absolute;
+    left: 624px;
+    top: 288px;
+}
+
+#upperText{
+    position: absolute;
+    left: 38%;
+    bottom: 66px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+}
+#lowerText{
+    position: absolute;
+    left: 45%;
+    bottom: 60px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#socialIcons{
+    position: absolute;
+    width: 20%;
+    right: 9%;
+    top: 90%;
+}
+.fa-brands:hover {
+    color: white;
 }
 
 /*Scroll bar*/
