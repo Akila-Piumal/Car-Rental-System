@@ -59,7 +59,9 @@
 }
 
 #mainSec{
-    height: 650px;
+    width: 100%;
+    min-height: 650px;
+    /*min-height: 100vh;*/
     background: url("../img/Car Website – 1@2x.png");
     background-size: cover;
     background-position: center;
@@ -107,12 +109,21 @@
 
 #socialIcons{
     position: absolute;
-    width: 20%;
-    right: 9%;
+    width: 11%;
+    right: 13%;
     top: 90%;
 }
 .fa-brands:hover {
     color: white;
+}
+
+#btnBookNow{
+    background-color: #474fa0;
+    height: 3rem;
+    width: 10rem;
+}
+#btnBookNow:hover{
+    background-color: #FE613C;
 }
 
 /*Scroll bar*/
