@@ -13,6 +13,7 @@
 
 /*===============  Home Page  ====================================*/
 
+/*navBar*/
 #header{
     backdrop-filter: blur(10px);
     width: 100%;
@@ -57,6 +58,9 @@
 #navBar a:hover::after{
     width: 100%;
 }
+
+/*====================================================*/
+
 
 /*Homepage 1st Section*/
 
@@ -128,11 +132,15 @@
     background-color: #FE613C;
 }
 
+/*===================================================================*/
+
+
+
 /*HomePage 2nd Secton*/
 
 #secTwo{
     background-color: #000000;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 #whyText{
@@ -159,6 +167,27 @@
 .textOfCount{
     color: #FE613C;
 }
+
+/*======================================================*/
+
+
+/*HomePage 3rd Secton*/
+
+#secThree{
+    background-color: #EEEFF1;
+    min-height: 700px;
+}
+#witinOneHourText{
+    font-family: 'Tilt Warp', cursive;
+}
+#btnSignUpLater{
+    background-color: #FFCC01;
+    height: 3rem;
+    width: 10rem;
+}
+
+
+
 
 /*Scroll bar*/
 html::-webkit-scrollbar{
