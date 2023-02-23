@@ -201,6 +201,19 @@
     color: #FD5F3C!important;
 }
 
+#imgDiv{
+    position: absolute;
+    width: 25%;
+    min-height: 40%;
+    background: url("../img/carNew.png");
+    background-size: cover;
+    background-position: center;
+    right: 200px;
+    top: 100px;
+}
+
+
+/*================================================================================*/
 
 
 /*Scroll bar*/
