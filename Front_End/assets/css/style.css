@@ -58,6 +58,8 @@
     width: 100%;
 }
 
+/*Homepage 1st Section*/
+
 #mainSec{
     width: 100%;
     min-height: 650px;
@@ -124,6 +126,38 @@
 }
 #btnBookNow:hover{
     background-color: #FE613C;
+}
+
+/*HomePage 2nd Secton*/
+
+#secTwo{
+    background-color: #000000;
+    min-height: 500px;
+}
+
+#whyText{
+    font-size: 3.5rem;
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Abril Fatface', cursive;
+}
+#icon1{
+    width: 100px;
+    height: 100px;
+}
+#icon2{
+    width: 100px;
+    height: 100px;
+}
+#icon3{
+    width: 100px;
+    height: 100px;
+}
+#CountsDiv{
+    padding-left: 200px;
+    padding-top: 30px;
+}
+.textOfCount{
+    color: #FE613C;
 }
 
 /*Scroll bar*/
