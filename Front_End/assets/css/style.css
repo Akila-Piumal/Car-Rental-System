@@ -175,7 +175,6 @@
 
 #secThree{
     background-color: #EEEFF1;
-    min-height: 700px;
 }
 #witinOneHourText{
     font-family: 'Tilt Warp', cursive;
@@ -185,7 +184,22 @@
     height: 3rem;
     width: 10rem;
 }
-
+#conUsText{
+    color: #474fa0;
+}
+#howItText{
+    color: #474fa0;
+}
+.lastLinks:hover{
+    color: #FE693C!important;
+}
+#developedByDiv{
+    height: 3.5rem;
+    background-color: black;
+}
+.socialIconsDown:hover{
+    color: #FD5F3C!important;
+}
 
 
 
