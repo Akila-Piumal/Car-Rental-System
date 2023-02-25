@@ -1,5 +1,6 @@
 package lk.ijse.easyCarRental.dto;
 
+import lk.ijse.easyCarRental.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,4 +15,5 @@ public class LoginDTO {
     private String userName;
     private String password;
     private String status;
+    private User userDet;
 }
