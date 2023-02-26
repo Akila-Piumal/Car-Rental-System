@@ -25,4 +25,10 @@ public class CarController {
         ArrayList<CarDTO> carsByBrand = service.getCarsByBrand(brand);
         return new ResponseUtil("200","Success",carsByBrand);
     }
+
+    @GetMapping
+    public ResponseUtil getAllCars(){
+        ArrayList<CarDTO> allCars = service.getAllCars();
+        return new ResponseUtil("200","Success",allCars);
+    }
 }

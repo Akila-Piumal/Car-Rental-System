@@ -32,6 +32,8 @@
         <h2 id="carsTopic">Our Cars</h2>
 
         <div id="dropDownSec" class="pt-5">
+            <button class="dropbtn py-3 mb-4" id="btnAllCars">All Cars</button>
+
             <div class="dropdown mb-4">
                 <button class="dropbtn py-3">Fuel Type</button>
                 <div class="dropdown-content">
@@ -45,15 +47,15 @@
             <div class="dropdown mb-4">
                 <button class="dropbtn py-3">Brand</button>
                 <div class="dropdown-content">
-                    <a href="#">BMW</a>
-                    <a href="#">Suzuki</a>
-                    <a href="#">Audi</a>
-                    <a href="#">Benz</a>
-                    <a href="#">Honda</a>
-                    <a href="#">Mazda</a>
-                    <a href="#">Mitsubishi</a>
-                    <a href="#">Nissan</a>
-                    <a href="#">Toyota</a>
+                    <a href="#" onclick="setCars('BMW')">BMW</a>
+                    <a href="#" onclick="setCars('Suzuki')">Suzuki</a>
+                    <a href="#" onclick="setCars('Audi')">Audi</a>
+                    <a href="#" onclick="setCars('Benz')">Benz</a>
+                    <a href="#" onclick="setCars('Honda')">Honda</a>
+                    <a href="#" onclick="setCars('Mazda')">Mazda</a>
+                    <a href="#" onclick="setCars('Mitsubishi')">Mitsubishi</a>
+                    <a href="#" onclick="setCars('Nissan')">Nissan</a>
+                    <a href="#" onclick="setCars('Toyota')">Toyota</a>
                 </div>
             </div>
 
@@ -94,29 +96,69 @@
 </main>
 
 
-
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script>
+
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+    // set all cars in the start
     setAllCars();
 
-    function setAllCars() {
+    $("#btnAllCars").click(function () {
+        setAllCars();
+    });
+
+    //Get all the cars details and set
+    function setAllCars(){
+        $.ajax({
+            url: baseUrl + "car",
+            method: "get",
+            success:function (resp){
+                setCarsByBrand(resp.data);
+            },
+            error:function (error){
+                var jsObject = JSON.parse(error.responseText);
+                alert(jsObject.message);
+            }
+        });
+    }
+
+    //get the ca details from ajax request
+    function setCars(param) {
+
+        $.ajax({
+            url: baseUrl + "car?brand=" + param + "",
+            method: 'get',
+            success: function (resp) {
+                alert(resp.message);
+                setCarsByBrand(resp.data);
+            },
+            error: function (error) {
+                var jsObject = JSON.parse(error.responseText);
+                alert(jsObject.message);
+            }
+        });
+    }
+
+    // set Cars to the divs
+    function setCarsByBrand(data) {
         $("#mainOfCars").empty();
-        for (let i = 0; i < 5; i++) {
+        for (var car of data) {
             $("#mainOfCars").append(`
                     <div id="carDiv" class="">
                         <div id="box-img">
                             <img src="assets/img/car1.jpg" alt="">
                         </div>
-                        <p id="carType">Luxury</p>
-                        <h2 id="carName">2018 Honda Civic</h2>
-                        <h4 id="priceLabel">3000 <span>per day</span></h4>
+                        <p id="carType">` + car.type + `</p>
+                        <h2 id="carName">` + car.name + `</h2>
+                        <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
                         <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
                     </div>
         `);
         }
     }
+
 </script>
 </body>
 </html>

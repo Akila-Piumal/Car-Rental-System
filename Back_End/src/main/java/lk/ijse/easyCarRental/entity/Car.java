@@ -17,6 +17,7 @@ import javax.swing.plaf.synth.SynthDesktopPaneUI;
 public class Car {
     @Id
     String RegNum;
+    String name;
     String brand;
     String type;
     String color;

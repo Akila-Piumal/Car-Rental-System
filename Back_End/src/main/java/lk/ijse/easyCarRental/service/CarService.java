@@ -7,4 +7,6 @@ import java.util.ArrayList;
 
 public interface CarService {
     ArrayList<CarDTO> getCarsByBrand(String brand);
+
+    ArrayList<CarDTO> getAllCars();
 }

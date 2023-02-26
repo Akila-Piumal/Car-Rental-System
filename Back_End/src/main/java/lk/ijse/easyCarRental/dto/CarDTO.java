@@ -12,6 +12,7 @@ import lombok.ToString;
 @ToString
 public class CarDTO {
     String RegNum;
+    String name;
     String brand;
     String type;
     String color;
