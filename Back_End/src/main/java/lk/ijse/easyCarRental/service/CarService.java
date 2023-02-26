@@ -8,5 +8,9 @@ import java.util.ArrayList;
 public interface CarService {
     ArrayList<CarDTO> getCarsByBrand(String brand);
 
+    ArrayList<CarDTO> getCarsByType(String type);
+
+    ArrayList<CarDTO> getCarsByFuelType(String fuelType);
+
     ArrayList<CarDTO> getAllCars();
 }

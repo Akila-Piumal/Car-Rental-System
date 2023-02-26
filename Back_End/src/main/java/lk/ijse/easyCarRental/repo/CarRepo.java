@@ -8,4 +8,8 @@ import java.util.ArrayList;
 public interface CarRepo extends JpaRepository<Car,String> {
 
     ArrayList<Car> findAllByBrand(String brand);
+
+    ArrayList<Car> findAllByFuelType(String fuelType);
+
+    ArrayList<Car> findAllByType(String type);
 }

@@ -33,6 +33,24 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public ArrayList<CarDTO> getCarsByType(String type) {
+        ArrayList<Car> allByType = carRepo.findAllByType(type);
+        if (allByType.size()==0){
+            throw new RuntimeException(type+" Cars not available");
+        }
+        return mapper.map(allByType,new TypeToken<ArrayList<CarDTO>>(){}.getType());
+    }
+
+    @Override
+    public ArrayList<CarDTO> getCarsByFuelType(String fuelType) {
+        ArrayList<Car> allByFuelType = carRepo.findAllByFuelType(fuelType);
+        if (allByFuelType.size()==0){
+            throw new RuntimeException(fuelType+" Cars not available");
+        }
+        return mapper.map(allByFuelType,new TypeToken<ArrayList<CarDTO>>(){}.getType());
+    }
+
+    @Override
     public ArrayList<CarDTO> getAllCars() {
         List<Car> all = carRepo.findAll();
         return mapper.map(all,new TypeToken<ArrayList<CarDTO>>(){}.getType());

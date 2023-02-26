@@ -37,35 +37,35 @@
             <div class="dropdown mb-4">
                 <button class="dropbtn py-3">Fuel Type</button>
                 <div class="dropdown-content">
-                    <a href="#">Petrol</a>
-                    <a href="#">Diesel</a>
-                    <a href="#">Hybrid</a>
-                    <a href="#">Electric</a>
+                    <a href="#" onclick="setCars('fuelType','Petrol')">Petrol</a>
+                    <a href="#" onclick="setCars('fuelType','Diesel')">Diesel</a>
+                    <a href="#" onclick="setCars('fuelType','Hybrid')">Hybrid</a>
+                    <a href="#" onclick="setCars('fuelType','Electric')">Electric</a>
                 </div>
             </div>
 
             <div class="dropdown mb-4">
                 <button class="dropbtn py-3">Brand</button>
                 <div class="dropdown-content">
-                    <a href="#" onclick="setCars('BMW')">BMW</a>
-                    <a href="#" onclick="setCars('Suzuki')">Suzuki</a>
-                    <a href="#" onclick="setCars('Audi')">Audi</a>
-                    <a href="#" onclick="setCars('Benz')">Benz</a>
-                    <a href="#" onclick="setCars('Honda')">Honda</a>
-                    <a href="#" onclick="setCars('Mazda')">Mazda</a>
-                    <a href="#" onclick="setCars('Mitsubishi')">Mitsubishi</a>
-                    <a href="#" onclick="setCars('Nissan')">Nissan</a>
-                    <a href="#" onclick="setCars('Toyota')">Toyota</a>
+                    <a href="#" onclick="setCars('brand','BMW')">BMW</a>
+                    <a href="#" onclick="setCars('brand','Suzuki')">Suzuki</a>
+                    <a href="#" onclick="setCars('brand','Audi')">Audi</a>
+                    <a href="#" onclick="setCars('brand','Benz')">Benz</a>
+                    <a href="#" onclick="setCars('brand','Honda')">Honda</a>
+                    <a href="#" onclick="setCars('brand','Mazda')">Mazda</a>
+                    <a href="#" onclick="setCars('brand','Mitsubishi')">Mitsubishi</a>
+                    <a href="#" onclick="setCars('brand','Nissan')">Nissan</a>
+                    <a href="#" onclick="setCars('brand','Toyota')">Toyota</a>
                 </div>
             </div>
 
             <div class="dropdown mb-4">
                 <button class="dropbtn py-3">Type</button>
                 <div class="dropdown-content">
-                    <a href="#">Luxury</a>
-                    <a href="#">Standard</a>
-                    <a href="#">Economy</a>
-                    <a href="#">Premium</a>
+                    <a href="#" onclick="setCars('type','Luxury')">Luxury</a>
+                    <a href="#" onclick="setCars('type','Standard')">Standard</a>
+                    <a href="#" onclick="setCars('type','Economy')">Economy</a>
+                    <a href="#" onclick="setCars('type','Premium')">Premium</a>
                 </div>
             </div>
 
@@ -125,10 +125,10 @@
     }
 
     //get the ca details from ajax request
-    function setCars(param) {
+    function setCars(path,param) {
 
         $.ajax({
-            url: baseUrl + "car?brand=" + param + "",
+            url: baseUrl + "car/"+path+"/"+ param + "",
             method: 'get',
             success: function (resp) {
                 alert(resp.message);
