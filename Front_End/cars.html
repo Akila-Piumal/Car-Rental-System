@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
 </head>
 <body>
 <header id="header">
@@ -26,8 +27,8 @@
     </ul>
 </header>
 
-<main>
-    <section id="sideSec" class="mt-5 pt-5 d-flex flex-column align-items-center">
+<main class="d-flex">
+    <section id="sideSec" class="mt-5 pt-5 d-flex flex-column align-items-center px-5">
         <h2 id="carsTopic">Our Cars</h2>
 
         <div id="dropDownSec" class="pt-5">
@@ -86,9 +87,36 @@
         </div>
 
     </section>
+
+    <section id="mainOfCars" class="mt-5 pt-5 d-flex flex-wrap gap-4 mx-5 px-5">
+
+    </section>
 </main>
+
+
 
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script>
+    setAllCars();
+
+    function setAllCars() {
+        $("#mainOfCars").empty();
+        for (let i = 0; i < 5; i++) {
+            $("#mainOfCars").append(`
+                    <div id="carDiv" class="">
+                        <div id="box-img">
+                            <img src="assets/img/car1.jpg" alt="">
+                        </div>
+                        <p id="carType">Luxury</p>
+                        <h2 id="carName">2018 Honda Civic</h2>
+                        <h4 id="priceLabel">3000 <span>per day</span></h4>
+                        <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
+                    </div>
+        `);
+        }
+    }
+</script>
 </body>
 </html>

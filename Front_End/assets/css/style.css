@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: space-between;
     /*border-bottom: 4px solid #FE613C;*/
+    z-index: 1000;
 }
 
 #logo img{
@@ -254,8 +255,9 @@ html::-webkit-scrollbar-thumb{
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 140px;
+    width: 170px;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .dropdown-content {
@@ -287,3 +289,84 @@ html::-webkit-scrollbar-thumb{
     background-color: #ef6d48;
     font-weight: bold;
 }
+
+/*mainOfCars*/
+
+#mainOfCars{
+    /*background-color: red;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+#carDiv{
+    padding: 10px;
+    border-radius: 1rem;
+    box-shadow: 1px 4px 41px rgba(0,0,0,0.1);
+}
+#box-img{
+    width: 100%;
+    height: 200px;
+}
+#box-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+}
+#carType{
+    padding: 0 10px;
+    border: 1px solid black;
+    width: max-content;
+    border-radius: 0.5rem;
+    margin: 1rem 0 1rem;
+}
+#carName{
+    font-size: 1.6rem;
+    font-weight: 100;
+    color: black;
+    font-family: 'Tilt Warp', cursive;
+    margin: 0.2rem 0 0.5rem;
+}
+#priceLabel{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ef6d48;
+}
+#priceLabel span{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #282626;
+}
+#btnRentOnCars{
+    display: flex;
+    justify-content: center;
+    background-color: #474fa0;
+    color: #fff;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+#btnRentOnCars:hover{
+    background-color: #ef6d48;
+}
+
+
+/*#carDiv{*/
+/*    height: 300px;*/
+/*    width: 31%;*/
+/*    background-color: black;*/
+/*    border-radius: 1rem;*/
+/*    box-shadow: 1px 4px 41px rgba(0,0,0,0.1);*/
+/*}*/
+/*#box-img{*/
+/*    width: 90%;*/
+/*    height: 200px;*/
+/*}*/
+/*#box-img img{*/
+/*    width: 90%;*/
+/*    height: 100%;*/
+/*    border-radius: 1rem;*/
+/*    object-fit: cover;*/
+/*    object-position: center;*/
+/*}*/
