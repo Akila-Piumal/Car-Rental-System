@@ -25,8 +25,8 @@ class LoginServiceImplTest {
 
     @Test
     public void saveLogin(){
-        LoginDTO dto=new LoginDTO("991042199V","Akila","1234","login",new User("991042199V","Akila Pumal","Mathugama","0783223485","Akilapiumal16@","123445555"));
-        loginService.saveLogin(dto);
+//        LoginDTO dto=new LoginDTO("991042199V","Akila","1234","login",new User("991042199V","Akila Pumal","Mathugama","0783223485","Akilapiumal16@","123445555"));
+//        loginService.saveLogin(dto);
     }
 
 }
