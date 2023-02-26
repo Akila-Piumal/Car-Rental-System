@@ -21,4 +21,5 @@ public class User {
     String contactNo;
     String email;
     String licenceNo;
+    String role;
 }
