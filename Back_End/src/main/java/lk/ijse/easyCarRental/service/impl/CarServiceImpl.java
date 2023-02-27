@@ -60,6 +60,15 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public ArrayList<CarDTO> getCarsByPassengerCount(int passengerCount) {
+        ArrayList<Car> allByNoOfPassengers = carRepo.findAllByNoOfPassengers(passengerCount);
+        if (allByNoOfPassengers.size()==0){
+            throw new RuntimeException(passengerCount+" Seats Cars not available");
+        }
+        return mapper.map(allByNoOfPassengers,new TypeToken<ArrayList<CarDTO>>(){}.getType());
+    }
+
+    @Override
     public ArrayList<CarDTO> getAllCars() {
         List<Car> all = carRepo.findAll();
         return mapper.map(all,new TypeToken<ArrayList<CarDTO>>(){}.getType());

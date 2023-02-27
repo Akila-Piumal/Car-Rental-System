@@ -53,5 +53,11 @@ public class CarController {
         return new ResponseUtil("200","Success",carsByTransmission);
     }
 
+    @GetMapping(path = "/passengerCount/{test}")
+    public ResponseUtil getCarsByPassengerCount(@PathVariable("test") int passengerCount){
+        ArrayList<CarDTO> carsByPassengerCount = service.getCarsByPassengerCount(passengerCount);
+        return new ResponseUtil("200","success",carsByPassengerCount);
+    }
+
 
 }

@@ -14,5 +14,7 @@ public interface CarService {
 
     ArrayList<CarDTO> getCarsByTransmission(String transmission);
 
+    ArrayList<CarDTO> getCarsByPassengerCount(int passengerCount);
+
     ArrayList<CarDTO> getAllCars();
 }
