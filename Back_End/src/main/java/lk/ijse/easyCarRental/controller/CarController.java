@@ -44,8 +44,13 @@ public class CarController {
     @GetMapping(path = "/fuelType/{test}")
     public ResponseUtil getCarsByFuelType(@PathVariable("test") String fuelType){
         ArrayList<CarDTO> carsByFuelType = service.getCarsByFuelType(fuelType);
-        System.out.println(carsByFuelType);
         return new ResponseUtil("200","success",carsByFuelType);
+    }
+
+    @GetMapping(path = "/transmission/{test}")
+    public ResponseUtil getCarsByTransmission(@PathVariable("test") String transmission){
+        ArrayList<CarDTO> carsByTransmission = service.getCarsByTransmission(transmission);
+        return new ResponseUtil("200","Success",carsByTransmission);
     }
 
 

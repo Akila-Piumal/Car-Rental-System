@@ -12,5 +12,7 @@ public interface CarService {
 
     ArrayList<CarDTO> getCarsByFuelType(String fuelType);
 
+    ArrayList<CarDTO> getCarsByTransmission(String transmission);
+
     ArrayList<CarDTO> getAllCars();
 }
