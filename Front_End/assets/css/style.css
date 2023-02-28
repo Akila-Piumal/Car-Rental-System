@@ -59,6 +59,10 @@
 #navBar a:hover::after{
     width: 100%;
 }
+#carLink{
+    color: #FE613C!important;
+
+}
 
 /*====================================================*/
 
@@ -355,6 +359,16 @@ html::-webkit-scrollbar-thumb{
 #btnRentOnCars:hover{
     background-color: #ef6d48;
 }
+
+/*======================================================================================*/
+/*Signup Model*/
+#staticBackdropLabel{
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin: auto;
+}
+
 
 
 /*#carDiv{*/

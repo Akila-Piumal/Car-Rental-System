@@ -26,14 +26,117 @@
     <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>
 
     <ul id="navBar">
-        <li><a href="#cars" class="links">Cars</a></li>
+        <li><a href="cars.html" class="links">Cars</a></li>
         <li><a href="#contactUs" class="links">Contact Us</a></li>
-        <li><a href="#" class="links">Sign Up</a></li>
-        <li><a href="#" class="links">Sign In</a></li>
+        <li><a href="#" class="links" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</a></li>
+        <li><a href="#" class="links" data-bs-target="#loginModel" data-bs-toggle="modal">Sign In</a></li>
     </ul>
 
 </header>
 <main id="main" style="background-color: #EEEFF1">
+
+    <!--    Login Model-->
+    <div aria-hidden="true" aria-labelledby="loginModelLabel" class="modal fade" id="loginModel" tabindex="-1"
+         data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content " style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModelLabel">Login</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                            type="button"></button>
+                </div>
+                <div class="modal-body" style="height: 400px ; width: 400px">
+                    <section class="d-flex flex-column justify-content-evenly" style="height: 300px">
+                        <div class="form-floating mb-3 ">
+                            <input class="form-control" id="floatingInput"
+                                   placeholder="name@example.com"
+                                   type="email">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="floatingPassword" placeholder="Password"
+                                   type="password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+
+                        <div aria-label="Basic mixed styles example" class="btn-group" role="group">
+                            <a class="btn btn-outline-primary" href="pages/home.html" role="button">Login</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Model Ends-->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header position-relative">
+                    <h1 class="modal-title fs-5 position-absolute fw-bold" id="staticBackdropLabel">Sign Up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 477px ; width: 486px">
+                    <form class="row g-3 ">
+
+                        <div class="col-md-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="nicNo">NIC No.</label>
+                            <input class="form-control form-control-sm " id="nicNo" type="text">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputName">Name</label>
+                            <input class="form-control form-control-sm" id="inputName" type="text">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputAddress">Address</label>
+                            <input class="form-control form-control-sm" id="inputAddress"
+                                   type="text">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="phone">Contact No.</label>
+                            <input class="form-control form-control-sm" id="phone" type="number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="licenceNo">Licence No.</label>
+                            <input class="form-control form-control-sm" id="licenceNo" type="text">
+                        </div>
+
+                        <!--                        <div class="col-md-12">-->
+                        <!--                            <input id="file" name="myFile" type="file" class="form-control form-control-sm">-->
+                        <!--                        </div>-->
+
+                        <div class="col-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputEmail">Email</label>
+                            <input class="form-control form-control-sm" id="inputEmail" type="email">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputPassword">Password</label>
+                            <input class="form-control form-control-sm" id="inputPassword"
+                                   type="password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSignUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section id="mainSec">
         <div class="row container-fluid my-5 px-0 " id="textSec">
             <div class="col-12 textDiv">
@@ -166,7 +269,7 @@
                 <small><a href="#" class="links lastLinks text-white">Privacy Policy</a></small>
                 <small><a href="#" class="links lastLinks text-white">Terms & Conditions</a></small>
             </div>
-            <div class="col-3 d-flex justify-content-evenly align-items-center px-5" >
+            <div class="col-3 d-flex justify-content-evenly align-items-center px-5">
                 <i class="fa-brands fa-facebook fa-fade fa-2xl text-white fs-4 socialIconsDown"
                    style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6;"></i>
                 <i class="fa-brands fa-linkedin fa-fade fa-2xl text-white fs-4 socialIconsDown"
@@ -181,7 +284,71 @@
     </section>
 </main>
 
+<script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    $('#btnSignUp').click(function () {
+        let nicNo = $('#nicNo').val();
+        let name = $('#inputName').val();
+        let address = $('#inputAddress').val();
+        let contactNo = $('#phone').val();
+        let licenceNo = $('#licenceNo').val();
+        let email = $('#inputEmail').val();
+        let password = $('#inputPassword').val();
+
+        let userDetails={
+            id:nicNo,
+            name:name,
+            address:address,
+            contactNo:contactNo,
+            email:email,
+            licenceNo:licenceNo,
+            role:"user"
+        }
+
+        let login={
+            id:nicNo,
+            email:email,
+            password:password,
+            userDet:userDetails
+        }
+
+        $.ajax({
+            url: baseUrl + "login",
+            method: "post",
+            contentType:"application/json",
+            data:JSON.stringify(login),
+            dataType:"json",
+            success:function (resp){
+                // alert(resp.message);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: resp.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                $('#staticBackdrop').modal('toggle');
+            },
+            error:function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -18,9 +18,9 @@ import javax.persistence.OneToOne;
 public class Login {
     @Id
     private String id;
-    private String userName;
+    private String email;
     private String password;
-    private String status;
+//    private String status;
     @OneToOne
     private User userDet;
 }

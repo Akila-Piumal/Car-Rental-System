@@ -17,6 +17,6 @@ public class LoginController {
     @PostMapping
     public ResponseUtil saveLogin(@RequestBody LoginDTO dto){
         service.saveLogin(dto);
-        return new ResponseUtil("200",dto.getId()+"Successfully Registered",null);
+        return new ResponseUtil("200","Successfully Registered",null);
     }
 }
