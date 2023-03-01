@@ -12,35 +12,113 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
 </head>
 <body>
-<style>
-    #userImg{
-        color: #FE723B;
-        font-size: 30px;
-    }
-    #navBar{
-        margin-right: 32px;
-        margin-bottom: 0;
-        align-items: center;
-    }
 
-</style>
-<header id="header">
-    <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav " id="navList">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
 
-    <ul id="navBar">
-        <li><a href="cars.html" class="links">Cars</a></li>
-        <li><a href="#" class="links">Contact Us</a></li>
-        <div class="d-flex flex-column align-items-center">
-            <i class="fa-solid fa-circle-user " id="userImg"></i>
-            <small class="text-white text-muted" id="userName">kdjkdd</small>
+            </ul>
         </div>
-<!--        <li><a href="#" class="links" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</a></li>-->
-<!--        <li><a href="#" class="links" data-bs-target="#loginModel" data-bs-toggle="modal">Sign In</a></li>-->
-    </ul>
+        <div>
+            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        </div>
+        <small class="text-white text-muted" id="userName"></small>
 
-</header>
+    </div>
+</nav>
+
+<main>
+    <section id="welcomeTextDiv">
+        <h1>Welcome to Easy Car</h1>
+        <h3 class="text-muted">Start driving in minutes with us..</h3>
+    </section>
+<!--    Search car section-->
+    <section id="searchCarSec" class="d-flex flex-column align-items-center">
+        <div id="searchCarDiv" class="row container-fluid col-6">
+            <div class="col-2 d-flex flex-column">
+                <label for="brand"><small>brand</small></label>
+                <select id="brand" class="form-select-sm">
+                    <option selected></option>
+                    <option>Suzuki</option>
+                    <option>Audi</option>
+                    <option>Benz</option>
+                    <option>Honda</option>
+                    <option>Mazda</option>
+                    <option>Mitsubishi</option>
+                    <option>Nissan</option>
+                    <option>Toyota</option>
+                </select>
+            </div>
+            <div class="col-2 d-flex flex-column">
+                <label for="type"><small>Type</small></label>
+                <select id="type" class="form-select-sm">
+                    <option selected></option>
+                    <option>Luxury</option>
+                    <option>Standard</option>
+                    <option>Economy</option>
+                    <option>Premium</option>
+                </select>
+            </div>
+            <div class="col-2 d-flex flex-column ">
+                <label for="transmissionType"><small>Transmission</small></label>
+                <select id="transmissionType" class="form-select-sm">
+                    <option selected></option>
+                    <option>Auto</option>
+                    <option>Manual</option>
+                </select>
+            </div>
+            <div class="col-2 d-flex flex-column">
+                <label for="fuelType"><small>Fuel Type</small></label>
+                <select id="fuelType" class="form-select-sm">
+                    <option selected></option>
+                    <option>petrol</option>
+                    <option>diesel</option>
+                </select>
+            </div>
+            <div class="col-2 d-flex flex-column">
+                <label for="passengerCount"><small>Passengers</small></label>
+                <select id="passengerCount" class="form-select-sm">
+                    <option selected></option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+
+            <div class="col-2 mt-3">
+                <button type="button" class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+
+    </section>
+</main>
 
 
 <script src="assets/js/jquery-3.6.1.min.js"></script>
@@ -53,10 +131,6 @@
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.userDet.name);
     };
-
-    $('#btnAkila').click(function (){
-        console.log(value);
-    });
 </script>
 </body>
 </html>
