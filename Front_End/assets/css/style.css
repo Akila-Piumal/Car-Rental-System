@@ -368,6 +368,12 @@ html::-webkit-scrollbar-thumb{
     width: max-content;
     margin: auto;
 }
+#loginModelLabel{
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin: auto;
+}
 
 
 

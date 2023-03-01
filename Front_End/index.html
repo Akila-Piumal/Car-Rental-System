@@ -40,27 +40,27 @@
          data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content " style="width: 400px;">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModelLabel">Login</h5>
+                <div class="modal-header mt-3">
+                    <h5 class="modal-title position-absolute fw-bolder fs-3" id="loginModelLabel">Login</h5>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
                             type="button"></button>
                 </div>
-                <div class="modal-body" style="height: 400px ; width: 400px">
-                    <section class="d-flex flex-column justify-content-evenly" style="height: 300px">
-                        <div class="form-floating mb-3 ">
-                            <input class="form-control" id="floatingInput"
-                                   placeholder="name@example.com"
-                                   type="email">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                            <input class="form-control" id="floatingPassword" placeholder="Password"
-                                   type="password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
+                <div class="modal-body" style="height: 350px ; width: 400px">
+                    <section class="d-flex flex-column justify-content-evenly mt-1" style="height: 280px">
+                        <form action="#" id="loginForm">
+                            <div class="form-floating ">
+                                <input class="form-control form-control-sm" id="emailInputInLogin" type="email" name="email">
+                                <label for="emailInputInLogin">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control form-control-sm" id="passwordInputInLogin" type="password" name="password">
+                                <label for="passwordInputInLogin">Password</label>
+                            </div>
+                        </form>
 
-                        <div aria-label="Basic mixed styles example" class="btn-group" role="group">
-                            <a class="btn btn-outline-primary" href="pages/home.html" role="button">Login</a>
+
+                        <div class="col-12 d-flex justify-content-center">
+                            <a class="btn btn-outline-primary col-6" role="button" id="btnLogin">Login</a>
                         </div>
                     </section>
                 </div>
@@ -69,14 +69,13 @@
     </div>
     <!--Model Ends-->
 
-
-    <!-- Modal -->
+    <!-- Sign Up Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header position-relative">
-                    <h1 class="modal-title fs-5 position-absolute fw-bold" id="staticBackdropLabel">Sign Up</h1>
+                    <h1 class="modal-title fs-3 position-absolute fw-bolder" id="staticBackdropLabel">Sign Up</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="height: 477px ; width: 486px">
@@ -293,6 +292,7 @@
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
 
+    // Sign Up Process
     $('#btnSignUp').click(function () {
         let nicNo = $('#nicNo').val();
         let name = $('#inputName').val();
@@ -302,30 +302,30 @@
         let email = $('#inputEmail').val();
         let password = $('#inputPassword').val();
 
-        let userDetails={
-            id:nicNo,
-            name:name,
-            address:address,
-            contactNo:contactNo,
-            email:email,
-            licenceNo:licenceNo,
-            role:"user"
+        let userDetails = {
+            id: nicNo,
+            name: name,
+            address: address,
+            contactNo: contactNo,
+            email: email,
+            licenceNo: licenceNo,
+            role: "user"
         }
 
-        let login={
-            id:nicNo,
-            email:email,
-            password:password,
-            userDet:userDetails
+        let login = {
+            id: nicNo,
+            email: email,
+            password: password,
+            userDet: userDetails
         }
 
         $.ajax({
             url: baseUrl + "login",
             method: "post",
-            contentType:"application/json",
-            data:JSON.stringify(login),
-            dataType:"json",
-            success:function (resp){
+            contentType: "application/json",
+            data: JSON.stringify(login),
+            dataType: "json",
+            success: function (resp) {
                 // alert(resp.message);
                 Swal.fire({
                     position: 'top-end',
@@ -336,7 +336,7 @@
                 })
                 $('#staticBackdrop').modal('toggle');
             },
-            error:function (error){
+            error: function (error) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
@@ -346,6 +346,32 @@
                 })
             }
 
+        });
+    });
+
+    $('#btnLogin').click(function () {
+        // let email = $('#emailInputInLogin').val();
+        // let password = $('#passwordInputInLogin').val();
+
+        var formData = $("#loginForm").serialize();
+
+        $.ajax({
+            url: baseUrl + "login",
+            data: formData,
+            dataType: 'json',
+            success:function (resp){
+                sessionStorage.setItem("user",JSON.stringify(resp.data));
+                window.location.href = "home.html";
+            },
+            error:function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
         });
     });
 </script>

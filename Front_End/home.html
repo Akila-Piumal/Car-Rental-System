@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" href="favIcon.png">
+    <meta name="keywords" content="Car Rental,Rent,Cars">
+    <meta name="description" content="Hi there! We are Easy Car Rentals. If you want a rent car please visit us..">
+    <meta name="author" content="Akila Piumal">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+</head>
+<body>
+<style>
+    #userImg{
+        color: #FE723B;
+        font-size: 30px;
+    }
+    #navBar{
+        margin-right: 32px;
+        margin-bottom: 0;
+        align-items: center;
+    }
+
+</style>
+<header id="header">
+    <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>
+
+    <ul id="navBar">
+        <li><a href="cars.html" class="links">Cars</a></li>
+        <li><a href="#" class="links">Contact Us</a></li>
+        <div class="d-flex flex-column align-items-center">
+            <i class="fa-solid fa-circle-user " id="userImg"></i>
+            <small class="text-white text-muted" id="userName">kdjkdd</small>
+        </div>
+<!--        <li><a href="#" class="links" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</a></li>-->
+<!--        <li><a href="#" class="links" data-bs-target="#loginModel" data-bs-toggle="modal">Sign In</a></li>-->
+    </ul>
+
+</header>
+
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.onload=function (){
+        var loggedUser=sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+        $('#userName').text(userObject.userDet.name);
+    };
+
+    $('#btnAkila').click(function (){
+        console.log(value);
+    });
+</script>
+</body>
+</html>

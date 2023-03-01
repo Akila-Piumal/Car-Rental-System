@@ -1,5 +1,6 @@
 package lk.ijse.easyCarRental.service.impl;
 
+import lk.ijse.easyCarRental.dto.LogDTO;
 import lk.ijse.easyCarRental.dto.LoginDTO;
 import lk.ijse.easyCarRental.entity.Login;
 import lk.ijse.easyCarRental.entity.User;
@@ -34,5 +35,14 @@ public class LoginServiceImpl implements LoginService {
         userRepo.save(user);
         Login log = mapper.map(dto, Login.class);
         loginRepo.save(log);
+    }
+
+    @Override
+    public LoginDTO searchLoginByEmailAndPassword(LogDTO dto) {
+        Login loginByEmailAndPassword = loginRepo.findLoginByEmailAndPassword(dto.getEmail(), dto.getPassword());
+        if (loginByEmailAndPassword==null){
+            throw new RuntimeException("Email or Password in Incorrect..!");
+        }
+        return mapper.map(loginByEmailAndPassword,LoginDTO.class);
     }
 }

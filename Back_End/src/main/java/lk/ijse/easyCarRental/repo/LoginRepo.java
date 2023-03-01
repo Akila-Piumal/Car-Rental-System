@@ -4,4 +4,6 @@ import lk.ijse.easyCarRental.entity.Login;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LoginRepo extends JpaRepository<Login,String> {
+
+    Login findLoginByEmailAndPassword(String email,String password);
 }
