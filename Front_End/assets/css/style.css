@@ -310,9 +310,10 @@ html::-webkit-scrollbar-thumb{
 #mainOfCars{
     /*background-color: red;*/
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+    grid-template-columns: repeat(auto-fit,minmax(200px,auto));
     gap: 1rem;
     margin-top: 2rem;
+    justify-content: center;
 }
 #carDiv{
     padding: 10px;

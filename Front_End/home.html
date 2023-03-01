@@ -115,22 +115,57 @@
 
     </section>
 
-    <section>
+    <section id="mainOfCars" class="mt-5 d-flex flex-wrap gap-4">
 
     </section>
 </main>
-
 
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
     window.onload=function (){
         var loggedUser=sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.userDet.name);
+        setAllCars();
     };
+
+    function setAllCars(){
+        $.ajax({
+            url: baseUrl + "car",
+            method: "get",
+            success:function (resp){
+                setCarsToTheDivs(resp.data);
+            },
+            error:function (error){
+                var jsObject = JSON.parse(error.responseText);
+                alert(jsObject.message);
+            }
+        });
+    }
+
+    function setCarsToTheDivs(data){
+        $("#mainOfCars").empty();
+        for (var car of data) {
+            $("#mainOfCars").append(`
+                    <div id="carDiv" class="">
+                        <div id="box-img">
+                            <img src="assets/img/car1.jpg" alt="">
+                        </div>
+                        <p id="carType">` + car.type + `</p>
+                        <h2 id="carName">` + car.name + `</h2>
+                        <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
+                        <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
+                    </div>
+        `);
+        }
+    }
+
 </script>
 </body>
 </html>
