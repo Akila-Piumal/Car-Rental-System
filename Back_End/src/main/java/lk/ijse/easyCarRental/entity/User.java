@@ -22,4 +22,6 @@ public class User {
     String email;
     String licenceNo;
     String role;
+    String nicImgPath;
+    String licenceImgPath;
 }

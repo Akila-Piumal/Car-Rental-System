@@ -114,13 +114,13 @@
                 <div class="modal-body" style="height: 477px ; width: 486px">
                     <form class="row g-3 ">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label form-control-sm mb-0 fw-bold"
                                    for="nicNo">NIC No.</label>
                             <input class="form-control form-control-sm " id="nicNo" type="text">
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label class="form-label form-control-sm mb-0 fw-bold"
                                    for="inputName">Name</label>
                             <input class="form-control form-control-sm" id="inputName" type="text">
@@ -143,9 +143,15 @@
                             <input class="form-control form-control-sm" id="licenceNo" type="text">
                         </div>
 
-                        <!--                        <div class="col-md-12">-->
-                        <!--                            <input id="file" name="myFile" type="file" class="form-control form-control-sm">-->
-                        <!--                        </div>-->
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="nicImgInput">NIC</label>
+                            <input id="nicImgInput" name="nic" type="file" class=" form-control form-control-sm">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="licenceImgInput">Driving Licence</label>
+                            <input id="licenceImgInput" name="licence" type="file" class="form-control form-control-sm">
+                        </div>
 
                         <div class="col-12">
                             <label class="form-label form-control-sm mb-0 fw-bold"
@@ -159,6 +165,7 @@
                             <input class="form-control form-control-sm" id="inputPassword"
                                    type="password">
                         </div>
+
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -327,6 +334,39 @@
 
     // Sign Up Process
     $('#btnSignUp').click(function () {
+
+        // upload NIC and Licence Images
+        var data=new FormData();
+        let nicImgFile=$("#nicImgInput")[0].files[0];
+        let nicImgFilename=$("#nicImgInput")[0].files[0].name;
+        let licenceImgFile=$("#licenceImgInput")[0].files[0];
+        let licenceImgFilename=$("#licenceImgInput")[0].files[0].name;
+        data.append("nic",nicImgFile,nicImgFilename);
+        data.append("licence",licenceImgFile,licenceImgFilename);
+
+        var nicImgUrl;
+        var licenceImgUrl;
+
+        $.ajax({
+           url:baseUrl+"upload",
+           method: 'post',
+           async:false,
+           contentType:false,
+           processData:false,
+           data:data,
+           success:function (resp){
+               nicImgUrl=baseUrl+resp.data.nicImgPath;
+               licenceImgUrl=baseUrl+resp.data.licenceImgPath;
+           },
+            error:function (error){
+               alert(error.responseText.message);
+            }
+        });
+
+        // image uploading finished===============================================================
+
+
+
         let nicNo = $('#nicNo').val();
         let name = $('#inputName').val();
         let address = $('#inputAddress').val();
@@ -342,7 +382,9 @@
             contactNo: contactNo,
             email: email,
             licenceNo: licenceNo,
-            role: "user"
+            role: "user",
+            nicImgPath:nicImgUrl,
+            licenceImgPath:licenceImgUrl
         }
 
         let login = {
@@ -359,7 +401,7 @@
             data: JSON.stringify(login),
             dataType: "json",
             success: function (resp) {
-                // alert(resp.message);
+
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -380,8 +422,10 @@
             }
 
         });
+
     });
 
+    // Login Process
     $('#btnLogin').click(function () {
         // let email = $('#emailInputInLogin').val();
         // let password = $('#passwordInputInLogin').val();
