@@ -17,4 +17,6 @@ public interface CarService {
     ArrayList<CarDTO> getCarsByPassengerCount(int passengerCount);
 
     ArrayList<CarDTO> getAllCars();
+
+    ArrayList<CarDTO> filterCar(String brand,String type,String transmissionType,String fuelType,int noOfPassengers);
 }

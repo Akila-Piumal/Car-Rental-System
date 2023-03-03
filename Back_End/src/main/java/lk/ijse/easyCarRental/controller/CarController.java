@@ -59,5 +59,10 @@ public class CarController {
         return new ResponseUtil("200","success",carsByPassengerCount);
     }
 
+    @GetMapping(path = "/filter/{brand}/{type}/{passengerCount}/{transmissionType}/{fuelType}")
+    public ResponseUtil filterCar(@PathVariable("brand") String brand,@PathVariable("type") String type,@PathVariable("passengerCount") String passengerCount,@PathVariable("transmissionType") String transmissionType,@PathVariable("fuelType") String fuelType ){
+        ArrayList<CarDTO> cars = service.filterCar(brand, type, transmissionType, fuelType, Integer.parseInt(passengerCount));
+        return new ResponseUtil("200","success",cars);
+    }
 
 }

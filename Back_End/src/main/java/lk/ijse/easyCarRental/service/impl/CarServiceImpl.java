@@ -73,6 +73,15 @@ public class CarServiceImpl implements CarService {
         List<Car> all = carRepo.findAll();
         return mapper.map(all,new TypeToken<ArrayList<CarDTO>>(){}.getType());
     }
+
+    @Override
+    public ArrayList<CarDTO> filterCar(String brand, String type, String transmissionType, String fuelType, int noOfPassengers) {
+        ArrayList<Car> all = carRepo.findAllByBrandAndTypeAndTransmissionTypeAndFuelTypeAndNoOfPassengers(brand, type, transmissionType, fuelType, noOfPassengers);
+        if (all.size()==0){
+            throw new RuntimeException("No Available cars..");
+        }
+        return mapper.map(all,new TypeToken<ArrayList<CarDTO>>(){}.getType());
+    }
 }
 
 

@@ -23,16 +23,17 @@
         <a class="navbar-brand" href="#">
             <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav " id="navList">
+            <ul class="navbar-nav " id="navListInHome">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="home.html" style="color: #ef6d48">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cars</a>
+                    <a class="nav-link" href="cars.html">Cars</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact Us</a>
@@ -41,19 +42,20 @@
             </ul>
         </div>
         <div>
-            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
+                 class="d-inline-block align-text-top">
         </div>
         <small class="text-white text-muted" id="userName"></small>
 
     </div>
 </nav>
 
-<main>
+<main id="mainInHome">
     <section id="welcomeTextDiv">
         <h1>Welcome to Easy Car</h1>
         <h3 class="text-muted">Start driving in minutes with us..</h3>
     </section>
-<!--    Search car section-->
+    <!--    Search car section-->
     <section id="searchCarSec" class="d-flex flex-column align-items-center">
         <div id="searchCarDiv" class="row container-fluid col-6">
             <div class="col-2 d-flex flex-column">
@@ -109,7 +111,7 @@
 
 
             <div class="col-2 mt-3">
-                <button type="button" class="btn btn-outline-primary">Search</button>
+                <button type="button" class="btn btn-outline-primary" id="btnSearchCar">Search</button>
             </div>
         </div>
 
@@ -128,28 +130,74 @@
 
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
 
-    window.onload=function (){
-        var loggedUser=sessionStorage.getItem("user");
+    window.onload = function () {
+        var loggedUser = sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.userDet.name);
         setAllCars();
     };
 
-    function setAllCars(){
+    function setAllCars() {
         $.ajax({
             url: baseUrl + "car",
             method: "get",
-            success:function (resp){
+            success: function (resp) {
                 setCarsToTheDivs(resp.data);
             },
-            error:function (error){
+            error: function (error) {
                 var jsObject = JSON.parse(error.responseText);
                 alert(jsObject.message);
             }
         });
     }
 
-    function setCarsToTheDivs(data){
+    function setCarsToTheDivs(data) {
+        $("#mainOfCars").empty();
+        for (var car of data) {
+            $("#mainOfCars").append(`
+                    <div id="carDiv" class="">
+                        <div id="box-img">
+                            <img src="assets/img/car1.jpg" alt="">
+                        </div>
+                        <p id="carType">` + car.type + `</p>
+                        <h2 id="carName">` + car.name + `</h2>
+                        <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
+                        <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
+                    </div>
+        `);
+        }
+    }
+
+
+
+    // search button eka click karama
+    $('#btnSearchCar').click(function () {
+        let brand = $('#brand').val();
+        let type = $('#type').val();
+        let transmissionType = $('#transmissionType').val();
+        let fuelType = $('#fuelType').val();
+        let passengerCount = $('#passengerCount').val();
+
+        $.ajax({
+            url: baseUrl + "car/filter/"+brand+"/"+type+"/"+passengerCount+"/"+transmissionType+"/"+fuelType+"",
+            method: 'get',
+            success:function (resp){
+                setCarsToTheDives(resp.data);
+            },
+            error:function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        });
+    });
+
+    // set Cars to the divs
+    function setCarsToTheDives(data) {
         $("#mainOfCars").empty();
         for (var car of data) {
             $("#mainOfCars").append(`

@@ -11,14 +11,45 @@
 }
 
 
-/*===============  Home Page  ====================================*/
+/*=====================  NAV BAR  ========================*/
 
-#navList{
+#navBarNew{
+    box-shadow: 0 0 0 2px rgb(235 235 235), 0.3em 0.3em 1em rgb(214 209 209);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+
+#navListInHome{
     margin-left: 70vw;
 }
-#navBarNew{
-    box-shadow: 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(211 211 211);
+#navListInHome li a:hover{
+    color: #ef6d48;
 }
+
+#navListInCars{
+    margin-left: 50vw;
+}
+#navListInCars li a:hover{
+    color: #ef6d48;
+}
+
+#navListInIndex{
+    margin-left: 50vw;
+}
+#navListInIndex li a:hover{
+    color: #ef6d48;
+}
+
+/*=================== NAVBAR ENDS===============================*/
+
+
+
+
+/*===============  Home Page  ====================================*/
+
 
 /*navBar*/
 #header{
@@ -73,6 +104,9 @@
 
 /*====================================================*/
 
+#main{
+    margin-top: 4.6rem!important;
+}
 
 /*Homepage 1st Section*/
 
@@ -385,6 +419,11 @@ html::-webkit-scrollbar-thumb{
 
 
 /*================================================================*/
+
+/*==========================================================*/
+#mainInHome{
+    margin-top: 6rem;
+}
 
 #welcomeTextDiv{
     display: flex;

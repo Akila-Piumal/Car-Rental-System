@@ -15,17 +15,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
 </head>
 <body>
-<header id="header">
-    <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>
+<!--<header id="header">-->
+<!--    <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>-->
 
-    <ul id="navBar">
-        <li><a href="index.html" class="links">Home</a></li>
-        <li><a href="#cars" class="links" id="carLink">Cars</a></li>
-        <li><a href="#contactUs" class="links">Contact Us</a></li>
-        <li><a href="#signUp" class="links">Sign Up</a></li>
-        <li><a href="#signIn" class="links">Sign In</a></li>
-    </ul>
-</header>
+<!--    <ul id="navBar">-->
+<!--        <li><a href="index.html" class="links">Home</a></li>-->
+<!--        <li><a href="#cars" class="links" id="carLink">Cars</a></li>-->
+<!--        <li><a href="#contactUs" class="links">Contact Us</a></li>-->
+<!--        <li><a href="#signUp" class="links">Sign Up</a></li>-->
+<!--        <li><a href="#signIn" class="links">Sign In</a></li>-->
+<!--    </ul>-->
+<!--</header>-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav " id="navListInCars">
+                <li class="nav-item" style="width: 74px">
+                    <a class="nav-link" aria-current="page" href="#" id="homeLinkInCars">Home</a>
+                </li>
+                <li class="nav-item" style="width: 70px">
+                    <a class="nav-link active fw-bold" href="cars.html" style="color: #ef6d48">Cars</a>
+                </li>
+                <li class="nav-item" style="width: 106px">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item" id="signInLink" style="width: 73px">
+                    <a class="nav-link" href="#">Sign In</a>
+                </li>
+                <li class="nav-item" id="signUpLink" >
+                    <a class="nav-link" href="#">Sign Up</a>
+                </li>
+
+            </ul>
+        </div>
+        <div id="loginImageDiv">
+            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40" class="d-inline-block align-text-top" id="loginImage">
+        </div>
+        <small class="text-white text-muted" id="userName"></small>
+
+    </div>
+</nav>
 
 <main class="d-flex">
     <section id="sideSec" class="mt-5 pt-5 d-flex flex-column align-items-center px-5">
@@ -103,6 +138,31 @@
 <script>
 
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    window.onload=function (){
+        $('#loginImageDiv').css('display','none');
+
+        var loggedUser=sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+
+        // log wela innawanm
+        if (userObject!=null){
+            $('#homeLinkInCars').click(function (){
+                window.location.href = "home.html";
+            });
+            $('#loginImageDiv').css("display","inline-block");
+            $('#userName').text(userObject.userDet.name);
+            $('#signUpLink').css("display","none");
+            $('#signInLink').css("display","none");
+            $('#navListInCars').css("margin-left","70vw");
+        }else{
+            $('#homeLinkInCars').click(function (){
+                window.location.href = "Index.html";
+            });
+        }
+    }
+
+
     // set all cars in the start
     setAllCars();
 
