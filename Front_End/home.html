@@ -154,6 +154,7 @@
     function setCarsToTheDivs(data) {
         $("#mainOfCars").empty();
         for (var car of data) {
+            var regNum=car.regNum;
             $("#mainOfCars").append(`
                     <div id="carDiv" class="">
                         <div id="box-img">
@@ -162,12 +163,12 @@
                         <p id="carType">` + car.type + `</p>
                         <h2 id="carName">` + car.name + `</h2>
                         <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
-                        <a href="rent.html" class="btn" id="btnRentOnCars">Rent Now</a>
+                        <h1 class="d-none" id="hideh1">`+car.regNum+`</h1>
+                        <a href="rent.html" class="btn" id="btnRentOnCars" onclick="(saveCarDetailsTemp(this))">Rent Now</a>
                     </div>
         `);
         }
     }
-
 
 
     // search button eka click karama
@@ -182,7 +183,7 @@
             url: baseUrl + "car/filter/"+brand+"/"+type+"/"+passengerCount+"/"+transmissionType+"/"+fuelType+"",
             method: 'get',
             success:function (resp){
-                setCarsToTheDives(resp.data);
+                setCarsToTheDivs(resp.data);
             },
             error:function (error){
                 Swal.fire({
@@ -196,27 +197,12 @@
         });
     });
 
-    // set Cars to the divs
-    function setCarsToTheDives(data) {
-        $("#mainOfCars").empty();
-        for (var car of data) {
-            $("#mainOfCars").append(`
-                    <div id="carDiv" class="">
-                        <div id="box-img">
-                            <img src="assets/img/car1.jpg" alt="">
-                        </div>
-                        <p id="carType">` + car.type + `</p>
-                        <h2 id="carName">` + car.name + `</h2>
-                        <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
-                        <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
-                    </div>
-        `);
-        }
+    // Save the clicked car details temp
+    function saveCarDetailsTemp(object){
+        let regNum = $(object).parent().children(':eq(4)').text();
+        // console.log(regNum);
+        sessionStorage.setItem("carNum",regNum);
     }
-
-    $('#btnRentOnCars').click(function (){
-        alert("ok")
-    });
 
 </script>
 </body>

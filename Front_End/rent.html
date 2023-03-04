@@ -55,7 +55,7 @@
         <div id="imageDiv">
             <img src="assets/img/car2.jpg" alt="">
         </div>
-        <h2>Vehicle Number</h2>
+        <h2 id="vehicleNum"></h2>
 
     </div>
 
@@ -77,7 +77,18 @@
         var loggedUser = sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.userDet.name);
+
+        let carNum = sessionStorage.getItem("carNum");
+
+        $('#vehicleNum').text(carNum);
+
+        setCarDetails();
+
     };
+
+    function setCarDetails(){
+
+    }
 </script>
 </body>
 </html>
