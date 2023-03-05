@@ -5,11 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,16 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @ToString
-public class User {
+public class Driver {
     @Id
-    String id;
+    String licenceNo;
     String name;
     String address;
     String contactNo;
-    String email;
-    String licenceNo;
-    String role;
-    String nicImgPath;
-    String licenceImgPath;
+    String status;
 
+    @OneToMany(mappedBy = "driver",cascade = {CascadeType.REFRESH,CascadeType.DETACH})
+    private List<RentDetail> rentDetails;
 }

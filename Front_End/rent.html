@@ -121,7 +121,8 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="LossDamageWaiver" class="form-label fw-bold">Loss Damage Waiver <small class="text-muted">(upload the paid slip below)</small> </label>
+                        <label for="LossDamageWaiver" class="form-label fw-bold">Loss Damage Waiver <small
+                                class="text-muted">(upload the paid slip below)</small> </label>
                         <input type="text" class="form-control" id="LossDamageWaiver" readonly>
                     </div>
 
@@ -208,11 +209,11 @@
                 $('#monthlyRate').text(resp.data.monthlyRate);
                 $('#priceForExtra').text(resp.data.priceForExtraKM);
                 $('#DriverChargePerDay').val('1000.00');
-                if (resp.data.type==='Premium'){
+                if (resp.data.type === 'Premium') {
                     $('#LossDamageWaiver').val('15000.00');
-                }else if (resp.data.type==='Luxury'){
+                } else if (resp.data.type === 'Luxury') {
                     $('#LossDamageWaiver').val('20000.00');
-                }else if (resp.data.type==='General'){
+                } else if (resp.data.type === 'General') {
                     $('#LossDamageWaiver').val('10000.00');
                 }
             },
@@ -231,49 +232,121 @@
             return Math.round((returnDate - pickUpDate) / (1000 * 60 * 60 * 24));
         }
 
-        $('#rentDays').val(datediff(returnDate,pickUpDate));
+        $('#rentDays').val(datediff(returnDate, pickUpDate));
 
-        if (parseInt($('#rentDays').val())<=30){
-            let days=parseInt($('#rentDays').val());
-            let dailyRate=parseFloat($('#dailyRate').text());
-            $('#rentCharge').val(parseFloat(dailyRate*days).toFixed(2));
-        }else{
-            let days=parseInt($('#rentDays').val());
-            let inMonthsAndDays=days/30;
-            let months=parseInt(inMonthsAndDays, 10);
-            let newDays=parseFloat((inMonthsAndDays-months)*30).toFixed(0);
+        if (parseInt($('#rentDays').val()) <= 30) {
+            let days = parseInt($('#rentDays').val());
+            let dailyRate = parseFloat($('#dailyRate').text());
+            $('#rentCharge').val(parseFloat(dailyRate * days).toFixed(2));
+        } else {
+            let days = parseInt($('#rentDays').val());
+            let inMonthsAndDays = days / 30;
+            let months = parseInt(inMonthsAndDays, 10);
+            let newDays = parseFloat((inMonthsAndDays - months) * 30).toFixed(0);
 
-            let monthlyRate=parseFloat($('#monthlyRate').text());
-            let dailyRate=parseFloat($('#dailyRate').text());
+            let monthlyRate = parseFloat($('#monthlyRate').text());
+            let dailyRate = parseFloat($('#dailyRate').text());
 
-            let newRentCharge=(monthlyRate*months)+(dailyRate*newDays);
+            let newRentCharge = (monthlyRate * months) + (dailyRate * newDays);
             $('#rentCharge').val(parseFloat(newRentCharge).toFixed(2));
         }
 
         setTheDriverCharge();
+        calculateRentTotal();
 
     });
 
     // Change event to driver option
-    $("#DriverOption").on("change", function(event) {
-
+    $("#DriverOption").on("change", function (event) {
         setTheDriverCharge();
-
-    } );
+        calculateRentTotal();
+    });
 
     // set Driver charge to the input field
-    function setTheDriverCharge(){
-        if ($("#DriverOption").val()==='With Driver'){
-            let days=$('#rentDays').val();
-            $('#driverCharge').val(parseFloat(1000*parseInt(days)).toFixed(2));
-        }else if($("#DriverOption").val()==='Without Driver'){
+    function setTheDriverCharge() {
+        if ($("#DriverOption").val() === 'With Driver') {
+            let days = $('#rentDays').val();
+            $('#driverCharge').val(parseFloat(1000 * parseInt(days)).toFixed(2));
+        } else if ($("#DriverOption").val() === 'Without Driver') {
             $('#driverCharge').val('0.00');
         }
     }
 
+    function calculateRentTotal() {
+        let rentCharge = parseFloat($('#rentCharge').val());
+        let driverCharge = parseFloat($('#driverCharge').val());
+        $('#rentTotal').val(parseFloat(rentCharge + driverCharge).toFixed(2));
+    }
+
     // Click the booking button
-    $('#btnBookInCart').click(function (){
-        alert("OK");
+    $('#btnBookInCart').click(function () {
+        var loggedUser = sessionStorage.getItem("user");
+        let carNum = sessionStorage.getItem("carNum");
+
+
+        // upload Loss Damage waiver slip
+        // var data=new FormData();
+        // let lossDamageImgFile=$("#lossDamageImgInput")[0].files[0];
+        // let lossDamageImgFilename=$("#lossDamageImgInput")[0].files[0].name;
+        // data.append("lossDamage",lossDamageImgFile,lossDamageImgFilename);
+        //
+        // var lossDamageImgUrl;
+        //
+        // $.ajax({
+        //     url:baseUrl+"upload/m1",
+        //     method: 'post',
+        //     async:false,
+        //     contentType:false,
+        //     processData:false,
+        //     data:data,
+        //     success:function (resp){
+        //         lossDamageImgUrl=baseUrl+resp.data.lossDamageImgPath;
+        //         alert(lossDamageImgUrl);
+        //     },
+        //     error:function (error){
+        //         alert(error.responseText.message);
+        //     }
+        // });
+
+        // image uploading finished===============================================================
+
+        let rentId=1;
+        let pickUpDate=$('#pickUpDate').val();
+        let pickUpTime=$('#pickUpTime').val();
+        let returnDate=$('#returnDate').val();
+        let status="Pending";
+        let lossDamageWaiverPrice=parseFloat($('#LossDamageWaiver').val());
+        let total=parseFloat($('#rentTotal').val());
+        let lossDamageImgPath="kaujddd";
+        let user=JSON.parse(loggedUser).userDet.id;
+        let rentDetails=[{rentId:rentId,carId:carNum,driverId:"B1234"}];
+
+        let ob={
+            rentId:1234,
+            pickUpDate:pickUpDate,
+            pickUpTime:pickUpTime,
+            returnDate:returnDate,
+            status:status,
+            lossDamageWaiverPrice:lossDamageWaiverPrice,
+            total:total,
+            lossDamageImgPath:lossDamageImgPath,
+            userId:user,
+            rentDetail:rentDetails
+        }
+
+        $.ajax({
+            url: baseUrl + "rent",
+            method: 'post',
+            dataType:"json",
+            data:JSON.stringify(ob),
+            contentType:"application/json",
+            success: function (resp) {
+                alert(resp.message);
+            },
+            error:function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
     });
 
 </script>

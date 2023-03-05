@@ -9,8 +9,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @ToString
-public class imgDTO {
-    String nicImgPath;
-    String licenceImgPath;
-    String lossDamageImgPath;
+public class DriverDTO {
+    String licenceNo;
+    String name;
+    String address;
+    String contactNo;
+    String status;
 }

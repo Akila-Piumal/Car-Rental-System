@@ -44,4 +44,28 @@ public class FileUploadController {
         }
     }
 
+//    @PostMapping(path = "/m1" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseUtil uploadFileWithSpringWay(@RequestPart("lossDamage") MultipartFile lossDamage) {
+//        try {
+//            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+//            File uploadsDir = new File(projectPath + "/uploads");
+//            System.out.println(projectPath);
+//            uploadsDir.mkdir();
+//            lossDamage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + lossDamage.getOriginalFilename()));
+//            lossDamage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + lossDamage.getOriginalFilename()));
+//
+//            //Save the path of the uploaded images in dto
+//            imgDTO imgDTO = new imgDTO();
+//
+//            imgDTO.setLossDamageImgPath("uploads/" + lossDamage.getOriginalFilename());
+//
+//            return new ResponseUtil("200", "success" + imgDTO, imgDTO);
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//            throw new RuntimeException(e.getMessage());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 }
