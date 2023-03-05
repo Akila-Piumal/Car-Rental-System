@@ -82,6 +82,13 @@ public class CarServiceImpl implements CarService {
         }
         return mapper.map(all,new TypeToken<ArrayList<CarDTO>>(){}.getType());
     }
+
+    @Override
+    public CarDTO getCarDetailsByRegNum(String regNum) {
+        Car car = carRepo.getCarDetailsFromNativeQuery(regNum);
+        return mapper.map(car,CarDTO.class);
+    }
+
 }
 
 

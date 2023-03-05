@@ -477,6 +477,36 @@ html::-webkit-scrollbar-thumb{
     object-position: center;
 }
 
+#summaryDiv{
+    margin-left: 50px;
+    width: 60%;
+    height: 600px;
+    box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0em 1em 1em rgb(216 216 216);
+    border-radius: 10px;
+    background: linear-gradient(56deg, #ffffff 50%, #ed8e69);
+}
+#summaryDiv h1{
+    font-family: 'Kanit', sans-serif;
+    color: #a37171;
+}
+#rentDetailsForm{
+    height: 530px;
+}
+
+#summaryDivChild{
+    width: 70%;
+    height: 70%;
+    box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0em 1em 1em rgb(216 216 216);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+#btnBookInCart{
+    background-color: #474fa0;
+    padding:10px 13px 10px 13px;
+}
+#btnBookInCart:hover{
+    background-color: #ef6d48;
+}
 
 
 

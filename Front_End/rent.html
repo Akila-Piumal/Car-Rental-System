@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -50,18 +53,125 @@
     </div>
 </nav>
 
-<section id="mainOfRent">
+<section id="mainOfRent" class="d-flex">
     <div id="carDetailsDiv" class="d-flex flex-column align-items-center">
         <div id="imageDiv">
             <img src="assets/img/car2.jpg" alt="">
         </div>
-        <h2 id="vehicleNum"></h2>
+        <div class="row container-fluid d-flex justify-content-center mt-5">
+            <div class="col-4 border-end">
+                <label for="vehicleBrand" class="fw-bolder">Brand</label>
+                <h3 id="vehicleBrand" class="fs-5 text-muted "></h3>
+            </div>
+            <div class="col-4 border-end">
+                <label for="vehicleType" class="fw-bolder">Type</label>
+                <h3 id="vehicleType" class="fs-5 text-muted"></h3>
+            </div>
+            <div class="col-4 border-end">
+                <label for="vehicleNum" class="fw-bolder">Reg Number</label>
+                <h3 id="vehicleNum" class="fs-5 text-muted"></h3>
+            </div>
+            <div class="col-4 border-end mt-3">
+                <label for="dailyRate" class="fw-bolder">Daily Rate</label>
+                <h3 id="dailyRate" class="fs-5 text-muted"></h3>
+            </div>
+            <div class="col-4 border-end mt-3">
+                <label for="monthlyRate" class="fw-bolder">Monthly Rate</label>
+                <h3 id="monthlyRate" class="fs-5 text-muted"></h3>
+            </div>
+            <div class="col-6 border-end border-start d-flex flex-column align-items-center mt-3">
+                <label for="priceForExtra" class="fw-bolder">Price For Extra KM</label>
+                <h3 id="priceForExtra" class="fs-5 text-muted"></h3>
+            </div>
+        </div>
+
 
     </div>
 
-    <div></div>
+    <div id="summaryDiv" class="d-flex flex-column align-items-center">
+        <div class="row">
+            <h1>Cart Summary</h1>
+        </div>
 
-    <div></div>
+        <div class="row container-fluid ">
+            <div id="formDiv" class="col-6">
+                <form action="#" class="row g3" id="rentDetailsForm">
+                    <div class="col-12">
+                        <label for="pickUpDate" class="form-label fw-bold">Pick-Up Date</label>
+                        <input type="date" class="form-control" id="pickUpDate">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="pickUpTime" class="form-label fw-bold">Pick-Up Time</label>
+                        <input type="time" class="form-control" id="pickUpTime">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="returnDate" class="form-label fw-bold">Return Date</label>
+                        <input type="date" class="form-control" id="returnDate">
+                    </div>
+
+                    <div class="col-12 d-flex flex-column">
+                        <label for="DriverOption" class="form-label fw-bold">Driver Option</label>
+                        <select id="DriverOption" class="form-select">
+                            <option selected></option>
+                            <option>With Driver</option>
+                            <option>Without Driver</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="LossDamageWaiver" class="form-label fw-bold">Loss Damage Waiver <small class="text-muted">(upload the paid slip below)</small> </label>
+                        <input type="text" class="form-control" id="LossDamageWaiver">
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-bold" for="lossDamageImgInput">loss Damage Waiver Slip</label>
+                        <input id="lossDamageImgInput" name="lossdamage" type="file" class="form-control">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="DriverChargePerDay" class="form-label fw-bold">Driver Charge Per Day</label>
+                        <input type="text" class="form-control" id="DriverChargePerDay">
+                    </div>
+
+                </form>
+            </div>
+
+            <div id="totalSummaryDiv" class="col-6 d-flex flex-column justify-content-evenly align-items-center">
+                <div class="d-flex flex-column align-items-center" id="summaryDivChild">
+                    <div class="col-8 mt-3">
+                        <label for="rentDays" class="form-label fw-bold">Rent Days</label>
+                        <input type="text" class="form-control " id="rentDays">
+                    </div>
+
+                    <div class="col-8 mt-3">
+                        <label for="driverCharge" class="form-label fw-bold">Driver Charge</label>
+                        <input type="text" class="form-control " id="driverCharge">
+                    </div>
+
+                    <div class="col-8 mt-3">
+                        <label for="rentCharge" class="form-label fw-bold">Rent Charge</label>
+                        <input type="text" class="form-control " id="rentCharge">
+                    </div>
+
+                    <div class="col-8 mt-3">
+                        <label for="rentTotal" class="form-label fw-bold">Rent Total</label>
+                        <input type="text" class="form-control " id="rentTotal">
+                    </div>
+                </div>
+
+                <div id="bookingBtnDiv">
+                    <button class="btn btn-primary border-0 fw-bolder" id="btnBookInCart">Booking Now</button>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
 </section>
 
 
@@ -79,15 +189,29 @@
         $('#userName').text(userObject.userDet.name);
 
         let carNum = sessionStorage.getItem("carNum");
-
-        $('#vehicleNum').text(carNum);
-
+        0.
         setCarDetails();
 
     };
 
-    function setCarDetails(){
+    function setCarDetails() {
+        let carNum = sessionStorage.getItem("carNum");
 
+        $.ajax({
+            url: baseUrl + "car?regNo=" + carNum,
+            method: 'get',
+            success: function (resp) {
+                $('#vehicleNum').text(resp.data.regNum);
+                $('#vehicleBrand').text(resp.data.brand);
+                $('#vehicleType').text(resp.data.type);
+                $('#dailyRate').text(resp.data.dailyRate);
+                $('#monthlyRate').text(resp.data.monthlyRate);
+                $('#priceForExtra').text(resp.data.priceForExtraKM);
+            },
+            error: function (error) {
+
+            }
+        });
     }
 </script>
 </body>

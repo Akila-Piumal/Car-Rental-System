@@ -23,11 +23,13 @@ public class CarController {
         return new ResponseUtil("200", "Success", allCars);
     }
 
-//    @GetMapping(params = "brand")
-//    public ResponseUtil getCarsByBrand(@Param("brand") String brand){
-//        ArrayList<CarDTO> carsByBrand = service.getCarsByBrand(brand);
-//        return new ResponseUtil("200","Success",carsByBrand);
-//    }
+    @GetMapping(params = "regNo")
+    public ResponseUtil getCarByRegNo(String regNo){
+//        CarDTO carByRegNo = service.getCarByRegNo(regNo);
+        CarDTO dto = service.getCarDetailsByRegNum(regNo);
+        return new ResponseUtil("200","Success",dto);
+    }
+
 
     @GetMapping(path = "/brand/{test}")
     public ResponseUtil getCarsByBrand(@PathVariable("test") String brand) {
