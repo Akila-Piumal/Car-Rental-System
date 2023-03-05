@@ -147,7 +147,7 @@
 
                     <div class="col-8 mt-3">
                         <label for="driverCharge" class="form-label fw-bold">Driver Charge</label>
-                        <input type="text" class="form-control fw-bold" id="driverCharge" readonly>
+                        <input type="text" class="form-control fw-bold" id="driverCharge" readonly value="0.00">
                     </div>
 
                     <div class="col-8 mt-3">
@@ -222,9 +222,58 @@
         });
     }
 
+
+    $('#returnDate').change(function () {
+        let pickUpDate = new Date($('#pickUpDate').val());
+        let returnDate = new Date($('#returnDate').val());
+
+        function datediff(returnDate, pickUpDate) {
+            return Math.round((returnDate - pickUpDate) / (1000 * 60 * 60 * 24));
+        }
+
+        $('#rentDays').val(datediff(returnDate,pickUpDate));
+
+        if (parseInt($('#rentDays').val())<=30){
+            let days=parseInt($('#rentDays').val());
+            let dailyRate=parseFloat($('#dailyRate').text());
+            $('#rentCharge').val(parseFloat(dailyRate*days).toFixed(2));
+        }else{
+            let days=parseInt($('#rentDays').val());
+            let inMonthsAndDays=days/30;
+            let months=parseInt(inMonthsAndDays, 10);
+            let newDays=parseFloat((inMonthsAndDays-months)*30).toFixed(0);
+
+            let monthlyRate=parseFloat($('#monthlyRate').text());
+            let dailyRate=parseFloat($('#dailyRate').text());
+
+            let newRentCharge=(monthlyRate*months)+(dailyRate*newDays);
+            $('#rentCharge').val(parseFloat(newRentCharge).toFixed(2));
+        }
+
+        setTheDriverCharge();
+
+    });
+
+    // Change event to driver option
+    $("#DriverOption").on("change", function(event) {
+
+        setTheDriverCharge();
+
+    } );
+
+    // set Driver charge to the input field
+    function setTheDriverCharge(){
+        if ($("#DriverOption").val()==='With Driver'){
+            let days=$('#rentDays').val();
+            $('#driverCharge').val(parseFloat(1000*parseInt(days)).toFixed(2));
+        }else if($("#DriverOption").val()==='Without Driver'){
+            $('#driverCharge').val('0.00');
+        }
+    }
+
     // Click the booking button
     $('#btnBookInCart').click(function (){
-
+        alert("OK");
     });
 
 </script>
