@@ -122,7 +122,7 @@
 
                     <div class="col-12">
                         <label for="LossDamageWaiver" class="form-label fw-bold">Loss Damage Waiver <small class="text-muted">(upload the paid slip below)</small> </label>
-                        <input type="text" class="form-control" id="LossDamageWaiver">
+                        <input type="text" class="form-control" id="LossDamageWaiver" readonly>
                     </div>
 
                     <div class="col-12">
@@ -132,7 +132,7 @@
 
                     <div class="col-12">
                         <label for="DriverChargePerDay" class="form-label fw-bold">Driver Charge Per Day</label>
-                        <input type="text" class="form-control" id="DriverChargePerDay">
+                        <input type="text" class="form-control" id="DriverChargePerDay" readonly>
                     </div>
 
                 </form>
@@ -142,22 +142,22 @@
                 <div class="d-flex flex-column align-items-center" id="summaryDivChild">
                     <div class="col-8 mt-3">
                         <label for="rentDays" class="form-label fw-bold">Rent Days</label>
-                        <input type="text" class="form-control " id="rentDays">
+                        <input type="text" class="form-control fw-bold" id="rentDays" readonly>
                     </div>
 
                     <div class="col-8 mt-3">
                         <label for="driverCharge" class="form-label fw-bold">Driver Charge</label>
-                        <input type="text" class="form-control " id="driverCharge">
+                        <input type="text" class="form-control fw-bold" id="driverCharge" readonly>
                     </div>
 
                     <div class="col-8 mt-3">
                         <label for="rentCharge" class="form-label fw-bold">Rent Charge</label>
-                        <input type="text" class="form-control " id="rentCharge">
+                        <input type="text" class="form-control fw-bold" id="rentCharge" readonly>
                     </div>
 
                     <div class="col-8 mt-3">
                         <label for="rentTotal" class="form-label fw-bold">Rent Total</label>
-                        <input type="text" class="form-control " id="rentTotal">
+                        <input type="text" class="form-control fw-bold" id="rentTotal" readonly>
                     </div>
                 </div>
 
@@ -165,8 +165,6 @@
                     <button class="btn btn-primary border-0 fw-bolder" id="btnBookInCart">Booking Now</button>
                 </div>
             </div>
-
-
 
         </div>
 
@@ -183,17 +181,19 @@
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
 
+    // when the window is loaded
     window.onload = function () {
         var loggedUser = sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.userDet.name);
 
         let carNum = sessionStorage.getItem("carNum");
-        0.
+
         setCarDetails();
 
     };
 
+    // set car details to the text fields
     function setCarDetails() {
         let carNum = sessionStorage.getItem("carNum");
 
@@ -207,12 +207,26 @@
                 $('#dailyRate').text(resp.data.dailyRate);
                 $('#monthlyRate').text(resp.data.monthlyRate);
                 $('#priceForExtra').text(resp.data.priceForExtraKM);
+                $('#DriverChargePerDay').val('1000.00');
+                if (resp.data.type==='Premium'){
+                    $('#LossDamageWaiver').val('15000.00');
+                }else if (resp.data.type==='Luxury'){
+                    $('#LossDamageWaiver').val('20000.00');
+                }else if (resp.data.type==='General'){
+                    $('#LossDamageWaiver').val('10000.00');
+                }
             },
             error: function (error) {
 
             }
         });
     }
+
+    // Click the booking button
+    $('#btnBookInCart').click(function (){
+
+    });
+
 </script>
 </body>
 </html>
