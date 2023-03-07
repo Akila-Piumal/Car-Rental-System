@@ -283,41 +283,42 @@
         var loggedUser = sessionStorage.getItem("user");
         let carNum = sessionStorage.getItem("carNum");
 
+        // upload loss Damage Waiver slip
+        var data=new FormData();
+        let lossDamageImgFile=$("#lossDamageImgInput")[0].files[0];
+        let lossDamageImgFilename=$("#lossDamageImgInput")[0].files[0].name;
+        data.append("nic",lossDamageImgFile,lossDamageImgFilename);
+        data.append("licence",lossDamageImgFile,lossDamageImgFilename);
+        data.append("lossDamageWaiver",lossDamageImgFile,lossDamageImgFilename);
 
-        // upload Loss Damage waiver slip
-        // var data=new FormData();
-        // let lossDamageImgFile=$("#lossDamageImgInput")[0].files[0];
-        // let lossDamageImgFilename=$("#lossDamageImgInput")[0].files[0].name;
-        // data.append("lossDamage",lossDamageImgFile,lossDamageImgFilename);
-        //
-        // var lossDamageImgUrl;
-        //
-        // $.ajax({
-        //     url:baseUrl+"upload/m1",
-        //     method: 'post',
-        //     async:false,
-        //     contentType:false,
-        //     processData:false,
-        //     data:data,
-        //     success:function (resp){
-        //         lossDamageImgUrl=baseUrl+resp.data.lossDamageImgPath;
-        //         alert(lossDamageImgUrl);
-        //     },
-        //     error:function (error){
-        //         alert(error.responseText.message);
-        //     }
-        // });
+        var lossDamageWaiverImgUrl;
+
+        $.ajax({
+            url:baseUrl+"upload",
+            method: 'post',
+            async:false,
+            contentType:false,
+            processData:false,
+            data:data,
+            success:function (resp){
+                lossDamageWaiverImgUrl=baseUrl+resp.data.lossDamageImgPath;
+                console.log(lossDamageWaiverImgUrl);
+            },
+            error:function (error){
+                alert(error.responseText.message);
+            }
+        });
 
         // image uploading finished===============================================================
 
-        let rentId=1;
+        let rentId=1234;
         let pickUpDate=$('#pickUpDate').val();
         let pickUpTime=$('#pickUpTime').val();
         let returnDate=$('#returnDate').val();
         let status="Pending";
         let lossDamageWaiverPrice=parseFloat($('#LossDamageWaiver').val());
         let total=parseFloat($('#rentTotal').val());
-        let lossDamageImgPath="kaujddd";
+        let lossDamageImgPath=lossDamageWaiverImgUrl;
         let user=JSON.parse(loggedUser).userDet.id;
         let rentDetails=[{rentId:rentId,carId:carNum,driverId:"B1234"}];
 

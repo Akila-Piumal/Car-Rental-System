@@ -332,6 +332,7 @@
         let licenceImgFilename=$("#licenceImgInput")[0].files[0].name;
         data.append("nic",nicImgFile,nicImgFilename);
         data.append("licence",licenceImgFile,licenceImgFilename);
+        data.append("lossDamageWaiver",licenceImgFile,licenceImgFilename);
 
         var nicImgUrl;
         var licenceImgUrl;
@@ -346,6 +347,8 @@
            success:function (resp){
                nicImgUrl=baseUrl+resp.data.nicImgPath;
                licenceImgUrl=baseUrl+resp.data.licenceImgPath;
+               console.log(nicImgUrl);
+               console.log(licenceImgUrl);
            },
             error:function (error){
                alert(error.responseText.message);

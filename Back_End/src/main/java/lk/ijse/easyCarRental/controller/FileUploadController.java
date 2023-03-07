@@ -19,7 +19,7 @@ public class FileUploadController {
 
     //Formalized end-point to upload files using Spring
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadFileWithSpringWay(@RequestPart("nic") MultipartFile nic, @RequestPart("licence") MultipartFile licence) {
+    public ResponseUtil uploadFileWithSpringWay(@RequestPart("nic") MultipartFile nic, @RequestPart("licence") MultipartFile licence,@RequestPart("lossDamageWaiver") MultipartFile lossDamage) {
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
             File uploadsDir = new File(projectPath + "/uploads");
@@ -27,12 +27,14 @@ public class FileUploadController {
             uploadsDir.mkdir();
             nic.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nic.getOriginalFilename()));
             licence.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licence.getOriginalFilename()));
+            lossDamage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + lossDamage.getOriginalFilename()));
 
             //Save the path of the uploaded images in dto
             imgDTO imgDTO = new imgDTO();
 
             imgDTO.setNicImgPath("uploads/" + nic.getOriginalFilename());
             imgDTO.setLicenceImgPath("uploads/" + licence.getOriginalFilename());
+            imgDTO.setLossDamageImgPath("uploads/" + lossDamage.getOriginalFilename());
 
             return new ResponseUtil("200", "success" + imgDTO, imgDTO);
         } catch (URISyntaxException e) {
