@@ -43,6 +43,13 @@
     color: #ef6d48;
 }
 
+#navListInAdmin{
+    margin-left: 20vw;
+}
+#navListInAdmin li a:hover{
+    color: #ef6d48;
+}
+
 /*=================== NAVBAR ENDS===============================*/
 
 
