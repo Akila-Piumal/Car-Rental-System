@@ -433,8 +433,14 @@
             data: formData,
             dataType: 'json',
             success:function (resp){
-                sessionStorage.setItem("user",JSON.stringify(resp.data));
-                window.location.href = "home.html";
+                let role=resp.data.userDet.role;
+                if (role==="admin"){
+                    sessionStorage.setItem("user",JSON.stringify(resp.data.userDet));
+                    window.location.href = "adminDashBoard.html";
+                }else if(role==="user"){
+                    sessionStorage.setItem("user",JSON.stringify(resp.data.userDet));
+                    window.location.href = "home.html";
+                }
             },
             error:function (error){
                 Swal.fire({

@@ -79,5 +79,20 @@
     </section>
 </main>
 
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    window.onload = function () {
+        var loggedUser = sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+        $('#userName').text(userObject.name);
+    };
+</script>
+
 </body>
 </html>

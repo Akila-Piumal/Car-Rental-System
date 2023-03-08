@@ -133,7 +133,7 @@
     window.onload = function () {
         var loggedUser = sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
-        $('#userName').text(userObject.userDet.name);
+        $('#userName').text(userObject.name);
         setAllCars();
     };
 
