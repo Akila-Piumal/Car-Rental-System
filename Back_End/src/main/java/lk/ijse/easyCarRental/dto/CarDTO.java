@@ -24,4 +24,8 @@ public class CarDTO {
     double monthlyRate;
     double freeMileage;
     double priceForExtraKM;
+    String frontImgPath;
+    String backImgPath;
+    String rightImgPath;
+    String leftImgPath;
 }

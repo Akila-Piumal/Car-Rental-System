@@ -21,4 +21,6 @@ public interface CarService {
     ArrayList<CarDTO> filterCar(String brand,String type,String transmissionType,String fuelType,int noOfPassengers);
 
     CarDTO getCarDetailsByRegNum(String regNum);
+
+    void saveCar(CarDTO dto);
 }

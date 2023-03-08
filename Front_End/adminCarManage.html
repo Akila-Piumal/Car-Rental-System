@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="icon" href="favIcon.png">
+    <meta name="keywords" content="Car Rental,Rent,Cars">
+    <meta name="description" content="Hi there! We are Easy Car Rentals. If you want a rent car please visit us..">
+    <meta name="author" content="Akila Piumal">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav " id="navListInAdmin">
+                <li class="nav-item ">
+                    <a class="nav-link border-end px-3" href="adminDashBoard.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active fw-bold border-end px-3" aria-current="page" href="adminCarManage.html"
+                       style="color: #ef6d48">Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border-end px-3" href="#">Drivers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border-end px-3" href="#">Rent Request</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border-end px-3" href="#">Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3" href="#">Return</a>
+                </li>
+
+            </ul>
+        </div>
+        <div>
+            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
+                 class="d-inline-block align-text-top">
+        </div>
+        <small class="text-white text-muted" id="userName"></small>
+
+    </div>
+</nav>
+
+<section id="mainOfAdminCars">
+    <section id="buttonSec" class="row container-fluid">
+        <div class="col-3 d-flex justify-content-start mt-3 mx-3">
+            <button type="button" class="btn fw-bold text-white" id="btnAddCar" data-bs-toggle="modal" data-bs-target="#addCarModel">Add Car</button>
+        </div>
+
+    </section>
+
+    <div class="modal fade" id="addCarModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" >
+                <div class="modal-header position-relative">
+                    <h1 class="modal-title fs-3 position-absolute fw-bolder" id="addCarModelLabel">Add Car</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 550px ; width: 486px">
+                    <form class="row g-3 ">
+
+                        <div class="col-md-4">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="regNo">Reg No.</label>
+                            <input class="form-control form-control-sm " id="regNo" type="text">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="brand">Brand</label>
+                            <input class="form-control form-control-sm" id="brand" type="text">
+                        </div>
+
+                        <div class="col-4">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="type">Type</label>
+                            <input class="form-control form-control-sm" id="type" type="text">
+                        </div>
+
+                        <div class="col-5">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="name">Name</label>
+                            <input class="form-control form-control-sm" id="name"
+                                   type="text">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="color">Color</label>
+                            <input class="form-control form-control-sm" id="color" type="color">
+                        </div>
+
+                        <div class="col-5">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="passengers">No. Of Passengers</label>
+                            <input class="form-control form-control-sm" id="passengers" type="text">
+                        </div>
+
+                        <div class="col-md-6 d-flex flex-column">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="fuelType">Fuel Type</label>
+                            <select name="fuelTypeSelect" id="fuelType" class="form-select form-select-sm">
+                                <option selected></option>
+                                <option>Petrol</option>
+                                <option>Diesel</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 d-flex flex-column">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="transmissionType">Transmission Type</label>
+                            <select name="transmissionTypeSelect" id="transmissionType" class="form-select form-select-sm">
+                                <option selected></option>
+                                <option>Auto</option>
+                                <option>Manual</option>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="dailyRate">Daily Rate</label>
+                            <input class="form-control form-control-sm" id="dailyRate" type="text">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="monthlyRate">Monthly Rate</label>
+                            <input class="form-control form-control-sm" id="monthlyRate" type="text">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="freeMileage">Free Mileage</label>
+                            <input class="form-control form-control-sm" id="freeMileage" type="text">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="extraKM">Price For Extra KM</label>
+                            <input class="form-control form-control-sm" id="extraKM" type="text">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="frontImgInput">Front Image</label>
+                            <input id="frontImgInput" name="frontImg" type="file" class=" form-control form-control-sm">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="backImgInput">Back Image</label>
+                            <input id="backImgInput" name="backImg" type="file" class=" form-control form-control-sm">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="leftImgInput">Left Side Image</label>
+                            <input id="leftImgInput" name="leftImg" type="file" class=" form-control form-control-sm">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="rightImgInput">Right Side Image</label>
+                            <input id="rightImgInput" name="rightImg" type="file" class=" form-control form-control-sm">
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnAddCarInModel">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="tableSec" class="mt-3">
+        <table id="tblCarDetails">
+            <thead>
+                <tr>
+                    <th>Reg No</th>
+                    <th>Brand</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Fuel Type</th>
+                    <th>Transmission Type</th>
+                    <th>Daily Rate</th>
+                    <th>Monthly Rate</th>
+                    <th>Free Mileage</th>
+                    <th>No Of Passengers</th>
+                    <th>Price for Extra KM</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="tblCarDetailsBody">
+
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    window.onload = function () {
+        var loggedUser = sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+        $('#userName').text(userObject.userDet.name);
+    };
+
+    getAllCars();
+
+    function getAllCars() {
+        $("#tblCarDetailsBody").empty();
+        $.ajax({
+            url: baseUrl+"car",
+            success: function (res) {
+                for (let c of res.data) {
+                    let regNum = c.regNum;
+                    let name = c.name;
+                    let brand = c.brand;
+                    let type = c.type;
+                    let color = c.color;
+                    let status = c.status;
+                    let noOfPassengers = c.noOfPassengers;
+                    let transmissionType = c.transmissionType;
+                    let fuelType = c.fuelType;
+                    let dailyRate = c.dailyRate;
+                    let monthlyRate = c.monthlyRate;
+                    let freeMileage = c.freeMileage;
+                    let priceForExtraKM = c.priceForExtraKM;
+
+                    let row = "<tr><td>" + regNum + "</td><td>" + brand + "</td><td>" + name + "</td><td>" + color + "</td><td>" + fuelType + "</td><td>" + transmissionType + "</td><td>" + dailyRate + "</td><td>" + monthlyRate + "</td><td>" + freeMileage + "</td><td>" + noOfPassengers + "</td><td>" + priceForExtraKM + "</td><td>" + type + "</td><td>" + status + "</td></tr>";
+                    $("#tblCarDetailsBody").append(row);
+                }
+                bindRowClickEvents();
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    function bindRowClickEvents() {
+        $("#tblCarDetailsBody>tr").click(function () {
+            // let code = $(this).children(":eq(0)").text();
+            // let name = $(this).children(":eq(1)").text();
+            // let qty = $(this).children(":eq(2)").text();
+            // let price = $(this).children(":eq(3)").text();
+            //
+            //
+            // //setting table details values to text fields
+            // $('#itemCode').val(code);
+            // $('#itemName').val(name);
+            // $('#itemQty').val(qty);
+            // $('#itemPrice').val(price);
+
+        });
+    }
+
+    $('#btnAddCarInModel').click(function (){
+        // upload Car Images
+        var data=new FormData();
+        let frontImgFile=$("#frontImgInput")[0].files[0];
+        let frontImgFilename=$("#frontImgInput")[0].files[0].name;
+        let backImgFile=$("#backImgInput")[0].files[0];
+        let backImgFilename=$("#backImgInput")[0].files[0].name;
+        let leftImgFile=$("#leftImgInput")[0].files[0];
+        let leftImgFilename=$("#leftImgInput")[0].files[0].name;
+        let rightImgFile=$("#rightImgInput")[0].files[0];
+        let rightImgFilename=$("#rightImgInput")[0].files[0].name;
+        data.append("nic",frontImgFile,frontImgFilename);
+        data.append("licence",frontImgFile,frontImgFilename);
+        data.append("lossDamageWaiver",frontImgFile,frontImgFilename);
+        data.append("frontImage",frontImgFile,frontImgFilename);
+        data.append("backImage",backImgFile,backImgFilename);
+        data.append("rightImage",rightImgFile,rightImgFilename);
+        data.append("leftImage",leftImgFile,leftImgFilename);
+
+        var frontImgUrl;
+        var backImgUrl;
+        var rightImgUrl;
+        var leftImgUrl;
+
+        $.ajax({
+            url:baseUrl+"upload",
+            method: 'post',
+            async:false,
+            contentType:false,
+            processData:false,
+            data:data,
+            success:function (resp){
+                frontImgUrl=baseUrl+resp.data.frontImgPath;
+                backImgUrl=baseUrl+resp.data.backImgPath;
+                rightImgUrl=baseUrl+resp.data.rightImgPath;
+                leftImgUrl=baseUrl+resp.data.leftImgPath;
+            },
+            error:function (error){
+                alert(error.responseText.message);
+            }
+        });
+
+        // image uploading finished================================
+
+        let regNo = $('#regNo').val();
+        let brand = $('#brand').val();
+        let type = $('#type').val();
+        let name = $('#name').val();
+        let color = $('#color').val();
+        let passengers = parseInt($('#passengers').val());
+        let fuelType = $('#fuelType').val();
+        let transmissionType = $('#transmissionType').val();
+        let dailyRate = parseFloat($('#dailyRate').val());
+        let monthlyRate = parseFloat($('#monthlyRate').val());
+        let freeMileage = parseFloat($('#freeMileage').val());
+        let extraKM = parseFloat($('#extraKM').val());
+
+        var car = {
+            regNum:regNo,
+            name:name,
+            brand:brand,
+            type:type,
+            color:color,
+            status:'available',
+            noOfPassengers:passengers,
+            transmissionType:transmissionType,
+            fuelType:fuelType,
+            dailyRate:dailyRate,
+            monthlyRate:monthlyRate,
+            freeMileage:freeMileage,
+            priceForExtraKM:extraKM,
+            frontImgPath:frontImgUrl,
+            backImgPath:backImgUrl,
+            rightImgPath:rightImgUrl,
+            leftImgPath:leftImgUrl
+        }
+
+        $.ajax({
+            url:baseUrl+"car",
+            method: 'post',
+            contentType:"application/json",
+            data: JSON.stringify(car),
+            dataType:"json",
+            success:function (resp){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: resp.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                getAllCars();
+                $('#addCarModel').modal('toggle');
+            },
+            error:function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

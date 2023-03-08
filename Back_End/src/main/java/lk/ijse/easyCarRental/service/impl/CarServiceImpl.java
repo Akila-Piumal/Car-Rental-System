@@ -89,6 +89,15 @@ public class CarServiceImpl implements CarService {
         return mapper.map(car,CarDTO.class);
     }
 
+    @Override
+    public void saveCar(CarDTO dto) {
+        if (carRepo.existsById(dto.getRegNum())){
+            throw new RuntimeException("Car "+dto.getRegNum()+" Already Exists.");
+        }
+        Car car = mapper.map(dto, Car.class);
+        carRepo.save(car);
+    }
+
 }
 
 

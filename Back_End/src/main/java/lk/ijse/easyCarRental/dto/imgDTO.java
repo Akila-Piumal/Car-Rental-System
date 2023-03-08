@@ -13,4 +13,8 @@ public class imgDTO {
     String nicImgPath;
     String licenceImgPath;
     String lossDamageImgPath;
+    String frontImgPath;
+    String backImgPath;
+    String rightImgPath;
+    String leftImgPath;
 }

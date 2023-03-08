@@ -515,6 +515,88 @@ html::-webkit-scrollbar-thumb{
     background-color: #ef6d48;
 }
 
+/*==================================================================================================================================*/
+
+/*========================================== Admin DashBoard Page ========================================================*/
+
+#mainOfAdminDashboard{
+    margin-top: 4.6rem!important;
+}
+#detailsDiv{
+    width: 70%;
+}
+#detailsDiv div{
+    width: 20%;
+    /*background-color: #0a58ca;*/
+    height: 150px;
+    border-radius: 17px;
+}
+#customersDiv {
+    /*box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0em 1em 1em rgb(216 216 216);*/
+    background: linear-gradient(45deg, #845ec2,#d65db1,#ff6f91,#ff9671,#ffc75f,#f9f871);
+}
+#carsDiv{
+    background: linear-gradient(135deg, #24ff72, #2196f3);
+}
+#driversDiv{
+   background: linear-gradient(135deg, #f403d1,#64b5f6);
+}
+
+#bookingsDiv{
+    background: linear-gradient(135deg, #ffec61,#f321d7);
+}
+
+/*================================================*/
+
+/*=================  Admin Car manage   =================*/
+
+#mainOfAdminCars {
+    margin-top: 4.6rem !important;
+    /*background-color: #e6f0ff;*/
+}
+#btnAddCar{
+    background: linear-gradient(135deg, #ffc961,#ff2f0b);
+    border: none;
+}
+
+#tableSec{
+    display: grid;
+    /*height: 100vh;*/
+    justify-content: center;
+    align-items: center;
+}
+#tblCarDetails{
+    border-collapse: collapse;
+    box-shadow: 20px 20px 20px 5px #a7bad3;
+    background-color: white;
+    text-align: center;
+}
+#tblCarDetails th{
+    background-color: #d0def2;
+    padding: 0.75rem 0.7rem;
+    /*text-transform: uppercase;*/
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 1000;
+    font-family: 'Kanit', sans-serif;
+}
+#tblCarDetailsBody td{
+    padding: 1rem 0.7rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+tr:nth-child(even){
+    background-color: #f3f8fe;
+}
+#addCarModelLabel{
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin: auto;
+    color: #ff2f0b!important;
+}
+
+
 
 
 /*#carDiv{*/

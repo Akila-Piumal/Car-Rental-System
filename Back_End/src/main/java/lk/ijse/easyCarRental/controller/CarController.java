@@ -23,6 +23,13 @@ public class CarController {
         return new ResponseUtil("200", "Success", allCars);
     }
 
+    @PostMapping
+    public ResponseUtil saveCar(@RequestBody CarDTO dto){
+        System.out.println(dto);
+        service.saveCar(dto);
+        return new ResponseUtil("200","Car Added.",null);
+    }
+
     @GetMapping(params = "regNo")
     public ResponseUtil getCarByRegNo(String regNo){
 //        CarDTO carByRegNo = service.getCarByRegNo(regNo);

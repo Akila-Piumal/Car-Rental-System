@@ -19,7 +19,7 @@ public class FileUploadController {
 
     //Formalized end-point to upload files using Spring
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil uploadFileWithSpringWay(@RequestPart("nic") MultipartFile nic, @RequestPart("licence") MultipartFile licence,@RequestPart("lossDamageWaiver") MultipartFile lossDamage) {
+    public ResponseUtil uploadFileWithSpringWay(@RequestPart("nic") MultipartFile nic, @RequestPart("licence") MultipartFile licence,@RequestPart("lossDamageWaiver") MultipartFile lossDamage, @RequestPart("frontImage") MultipartFile frontImage, @RequestPart("backImage") MultipartFile backImage,@RequestPart("rightImage") MultipartFile rightImage,@RequestPart("leftImage") MultipartFile leftImage) {
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
             File uploadsDir = new File(projectPath + "/uploads");
@@ -28,6 +28,10 @@ public class FileUploadController {
             nic.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nic.getOriginalFilename()));
             licence.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licence.getOriginalFilename()));
             lossDamage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + lossDamage.getOriginalFilename()));
+            frontImage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + frontImage.getOriginalFilename()));
+            backImage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + backImage.getOriginalFilename()));
+            rightImage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + rightImage.getOriginalFilename()));
+            leftImage.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + leftImage.getOriginalFilename()));
 
             //Save the path of the uploaded images in dto
             imgDTO imgDTO = new imgDTO();
@@ -35,6 +39,10 @@ public class FileUploadController {
             imgDTO.setNicImgPath("uploads/" + nic.getOriginalFilename());
             imgDTO.setLicenceImgPath("uploads/" + licence.getOriginalFilename());
             imgDTO.setLossDamageImgPath("uploads/" + lossDamage.getOriginalFilename());
+            imgDTO.setFrontImgPath("uploads/" + frontImage.getOriginalFilename());
+            imgDTO.setBackImgPath("uploads/" + backImage.getOriginalFilename());
+            imgDTO.setRightImgPath("uploads/" + rightImage.getOriginalFilename());
+            imgDTO.setLeftImgPath("uploads/" + leftImage.getOriginalFilename());
 
             return new ResponseUtil("200", "success" + imgDTO, imgDTO);
         } catch (URISyntaxException e) {
