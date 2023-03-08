@@ -323,11 +323,11 @@
         let lossDamageWaiverPrice=parseFloat($('#LossDamageWaiver').val());
         let total=parseFloat($('#rentTotal').val());
         let lossDamageImgPath=lossDamageWaiverImgUrl;
-        let user=JSON.parse(loggedUser).userDet.id;
+        let user=JSON.parse(loggedUser).id;
         let rentDetails=[{rentId:rentId,carId:carNum,driverId:"B1234"}];
 
         let ob={
-            rentId:1234,
+            rentId:rentId,
             pickUpDate:pickUpDate,
             pickUpTime:pickUpTime,
             returnDate:returnDate,

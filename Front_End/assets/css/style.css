@@ -546,13 +546,12 @@ html::-webkit-scrollbar-thumb{
     background: linear-gradient(135deg, #ffec61,#f321d7);
 }
 
-/*================================================*/
+/*===============================================================================================================*/
 
 /*=================  Admin Car manage   =================*/
 
 #mainOfAdminCars {
     margin-top: 4.6rem !important;
-    /*background-color: #e6f0ff;*/
 }
 #btnAddCar{
     background: linear-gradient(135deg, #ffc961,#ff2f0b);
@@ -595,6 +594,87 @@ tr:nth-child(even){
     margin: auto;
     color: #ff2f0b!important;
 }
+
+
+/*===================================================================================================================*/
+
+/*=================  Admin Rent Requests  =================*/
+
+#mainOfAdminRentRequests{
+    margin-top: 4.6rem !important;
+}
+#requestsTableSec{
+    margin-top: 30px;
+    width: 60%;
+}
+#tblRentRequestsBody tr{
+    cursor: pointer;
+}
+#tblRentRequestsBody tr:hover{
+    background-color: #b9daff;
+}
+#lossDamageSlipSec{
+    width: 40%;
+}
+#lossDamageSlipDiv{
+    margin-top: 35px;
+    width: 93%;
+    height: 585px;
+    box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(84 84 84);
+    border-radius: 10px;
+}
+#lossImgDiv{
+    width: 40%;
+    height: 200px;
+}
+#nicImgDiv{
+    width: 40%;
+    height: 200px;
+    /*border: 1px solid black;*/
+}
+#lossImgDiv div{
+    width: 100%;
+    height: 80%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #acf3ee;
+    /*box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(84 84 84);*/
+}
+#nicImgDiv div{
+    width: 100%;
+    height: 80%;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #acf3ee;
+    /*box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(84 84 84);*/
+}
+#carAndDriverDiv{
+    width: 70%;
+    height: 70%;
+}
+
+#btnReject{
+    background: linear-gradient(135deg, #ffc961,#ff2f0b);
+    border: none;
+}
+#btnAccept{
+    background: linear-gradient(135deg, #80ff31, #2b8b00);
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
