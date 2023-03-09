@@ -11,4 +11,6 @@ public interface RentService {
     ArrayList<RentDTO> getAll();
 
     RentDTO getById(Long rentId);
+
+    RentDTO getLastRent();
 }

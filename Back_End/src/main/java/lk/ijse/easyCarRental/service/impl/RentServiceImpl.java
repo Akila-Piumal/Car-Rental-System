@@ -1,6 +1,7 @@
 package lk.ijse.easyCarRental.service.impl;
 
 import lk.ijse.easyCarRental.dto.RentDTO;
+import lk.ijse.easyCarRental.entity.Car;
 import lk.ijse.easyCarRental.entity.Rent;
 import lk.ijse.easyCarRental.repo.RentRepo;
 import lk.ijse.easyCarRental.service.RentService;
@@ -39,5 +40,11 @@ public class RentServiceImpl implements RentService {
     public RentDTO getById(Long rentId) {
         Rent byRentId = rentRepo.findByRentId(rentId);
         return mapper.map(byRentId,RentDTO.class);
+    }
+
+    @Override
+    public RentDTO getLastRent() {
+        Rent lastRent = rentRepo.getLastRentFromNative();
+        return mapper.map(lastRent,RentDTO.class);
     }
 }
