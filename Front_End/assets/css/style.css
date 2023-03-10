@@ -514,6 +514,10 @@ html::-webkit-scrollbar-thumb{
 #btnBookInCart:hover{
     background-color: #ef6d48;
 }
+#pendingText{
+    color: red;
+    display: none;
+}
 
 /*==================================================================================================================================*/
 
@@ -664,8 +668,60 @@ tr:nth-child(even){
     border: none;
 }
 
+/*============================================================================================*/
+
+/*===================== Admin Driver manage  =====================================*/
+
+#mainOfAdminDrivers {
+    margin-top: 4.6rem !important;
+}
+
+#btnAddDriver{
+    background: linear-gradient(135deg, #ffc961,#ff2f0b);
+    border: none;
+}
+
+#driversTableSec{
+    display: grid;
+    /*height: 100vh;*/
+    justify-content: center;
+    align-items: center;
+}
 
 
+#tblDriverDetails{
+    border-collapse: collapse;
+    box-shadow: 20px 20px 20px 5px #a7bad3;
+    background-color: white;
+    text-align: center;
+}
+#tblDriverDetails th{
+    background-color: #d0def2;
+    padding: 0.75rem 3rem;
+    /*text-transform: uppercase;*/
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+
+#tblDriverDetailsBody td{
+    padding: 1rem 0.7rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+tr:nth-child(even){
+    background-color: #f3f8fe;
+}
+#addCarModelLabel{
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin: auto;
+    color: #ff2f0b!important;
+}
 
 
 

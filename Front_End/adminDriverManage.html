@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cars</title>
+    <title>Driver Manage</title>
     <link rel="icon" href="favIcon.png">
     <meta name="keywords" content="Car Rental,Rent,Cars">
     <meta name="description" content="Hi there! We are Easy Car Rentals. If you want a rent car please visit us..">
@@ -11,12 +11,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -32,11 +29,10 @@
                     <a class="nav-link border-end px-3" href="adminDashBoard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active fw-bold border-end px-3" aria-current="page" href="adminCarManage.html"
-                       style="color: #ef6d48">Cars</a>
+                    <a class="nav-link border-end px-3" href="adminCarManage.html" >Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-end px-3" href="adminDriverManage.html">Drivers</a>
+                    <a class="nav-link active fw-bold border-end px-3" aria-current="page" href="#" style="color: #ef6d48">Drivers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link border-end px-3" href="adminRentRequests.html">Rent Request</a>
@@ -59,12 +55,11 @@
     </div>
 </nav>
 
-<section id="mainOfAdminCars">
+<section id="mainOfAdminDrivers">
     <section id="buttonSec" class="row container-fluid">
         <div class="col-3 d-flex justify-content-start mt-3 mx-3">
-            <button type="button" class="btn fw-bold text-white" id="btnAddCar" data-bs-toggle="modal" data-bs-target="#addCarModel">Add Car</button>
+            <button type="button" class="btn fw-bold text-white" id="btnAddDriver" data-bs-toggle="modal" data-bs-target="#addCarModel">Add Driver</button>
         </div>
-
     </section>
 
     <div class="modal fade" id="addCarModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -186,27 +181,19 @@
         </div>
     </div>
 
-    <section id="tableSec" class="mt-3">
-        <table id="tblCarDetails">
+    <section id="driversTableSec" class="mt-3">
+        <table id="tblDriverDetails">
             <thead>
-                <tr>
-                    <th>Reg No</th>
-                    <th>Brand</th>
-                    <th>Name</th>
-                    <th>Color</th>
-                    <th>Fuel Type</th>
-                    <th>Transmission Type</th>
-                    <th>Daily Rate</th>
-                    <th>Monthly Rate</th>
-                    <th>Free Mileage</th>
-                    <th>No Of Passengers</th>
-                    <th>Price for Extra KM</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                </tr>
+            <tr>
+                <th>Licence No</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact No.</th>
+                <th>Status</th>
+            </tr>
             </thead>
 
-            <tbody id="tblCarDetailsBody">
+            <tbody id="tblDriverDetailsBody">
 
             </tbody>
         </table>
@@ -227,32 +214,23 @@
         $('#userName').text(userObject.name);
     };
 
-    getAllCars();
+    getAllDrivers();
 
-    function getAllCars() {
-        $("#tblCarDetailsBody").empty();
+    function getAllDrivers() {
+        $("#tblDriverDetailsBody").empty();
         $.ajax({
-            url: baseUrl+"car",
+            url: baseUrl+"driver",
             success: function (res) {
                 for (let c of res.data) {
-                    let regNum = c.regNum;
+                    let licenceNo = c.licenceNo;
+                    let address = c.address;
+                    let contactNo = c.contactNo;
                     let name = c.name;
-                    let brand = c.brand;
-                    let type = c.type;
-                    let color = c.color;
                     let status = c.status;
-                    let noOfPassengers = c.noOfPassengers;
-                    let transmissionType = c.transmissionType;
-                    let fuelType = c.fuelType;
-                    let dailyRate = c.dailyRate;
-                    let monthlyRate = c.monthlyRate;
-                    let freeMileage = c.freeMileage;
-                    let priceForExtraKM = c.priceForExtraKM;
 
-                    let row = "<tr><td>" + regNum + "</td><td>" + brand + "</td><td>" + name + "</td><td>" + color + "</td><td>" + fuelType + "</td><td>" + transmissionType + "</td><td>" + dailyRate + "</td><td>" + monthlyRate + "</td><td>" + freeMileage + "</td><td>" + noOfPassengers + "</td><td>" + priceForExtraKM + "</td><td>" + type + "</td><td>" + status + "</td></tr>";
-                    $("#tblCarDetailsBody").append(row);
+                    let row = "<tr><td>" + licenceNo + "</td><td>" + name + "</td><td>" + address + "</td><td>" + contactNo + "</td><td>" + status + "</td></tr>";
+                    $("#tblDriverDetailsBody").append(row);
                 }
-                bindRowClickEvents();
             },
             error: function (error) {
                 let message = JSON.parse(error.responseText).message;
@@ -260,130 +238,6 @@
             }
         });
     }
-
-    function bindRowClickEvents() {
-        $("#tblCarDetailsBody>tr").click(function () {
-            // let code = $(this).children(":eq(0)").text();
-            // let name = $(this).children(":eq(1)").text();
-            // let qty = $(this).children(":eq(2)").text();
-            // let price = $(this).children(":eq(3)").text();
-            //
-            //
-            // //setting table details values to text fields
-            // $('#itemCode').val(code);
-            // $('#itemName').val(name);
-            // $('#itemQty').val(qty);
-            // $('#itemPrice').val(price);
-
-        });
-    }
-
-    $('#btnAddCarInModel').click(function (){
-        // upload Car Images
-        var data=new FormData();
-        let frontImgFile=$("#frontImgInput")[0].files[0];
-        let frontImgFilename=$("#frontImgInput")[0].files[0].name;
-        let backImgFile=$("#backImgInput")[0].files[0];
-        let backImgFilename=$("#backImgInput")[0].files[0].name;
-        let leftImgFile=$("#leftImgInput")[0].files[0];
-        let leftImgFilename=$("#leftImgInput")[0].files[0].name;
-        let rightImgFile=$("#rightImgInput")[0].files[0];
-        let rightImgFilename=$("#rightImgInput")[0].files[0].name;
-        data.append("nic",frontImgFile,frontImgFilename);
-        data.append("licence",frontImgFile,frontImgFilename);
-        data.append("lossDamageWaiver",frontImgFile,frontImgFilename);
-        data.append("frontImage",frontImgFile,frontImgFilename);
-        data.append("backImage",backImgFile,backImgFilename);
-        data.append("rightImage",rightImgFile,rightImgFilename);
-        data.append("leftImage",leftImgFile,leftImgFilename);
-
-        var frontImgUrl;
-        var backImgUrl;
-        var rightImgUrl;
-        var leftImgUrl;
-
-        $.ajax({
-            url:baseUrl+"upload",
-            method: 'post',
-            async:false,
-            contentType:false,
-            processData:false,
-            data:data,
-            success:function (resp){
-                frontImgUrl=baseUrl+resp.data.frontImgPath;
-                backImgUrl=baseUrl+resp.data.backImgPath;
-                rightImgUrl=baseUrl+resp.data.rightImgPath;
-                leftImgUrl=baseUrl+resp.data.leftImgPath;
-            },
-            error:function (error){
-                alert(error.responseText.message);
-            }
-        });
-
-        // image uploading finished================================
-
-        let regNo = $('#regNo').val();
-        let brand = $('#brand').val();
-        let type = $('#type').val();
-        let name = $('#name').val();
-        let color = $('#color').val();
-        let passengers = parseInt($('#passengers').val());
-        let fuelType = $('#fuelType').val();
-        let transmissionType = $('#transmissionType').val();
-        let dailyRate = parseFloat($('#dailyRate').val());
-        let monthlyRate = parseFloat($('#monthlyRate').val());
-        let freeMileage = parseFloat($('#freeMileage').val());
-        let extraKM = parseFloat($('#extraKM').val());
-
-        var car = {
-            regNum:regNo,
-            name:name,
-            brand:brand,
-            type:type,
-            color:color,
-            status:'available',
-            noOfPassengers:passengers,
-            transmissionType:transmissionType,
-            fuelType:fuelType,
-            dailyRate:dailyRate,
-            monthlyRate:monthlyRate,
-            freeMileage:freeMileage,
-            priceForExtraKM:extraKM,
-            frontImgPath:frontImgUrl,
-            backImgPath:backImgUrl,
-            rightImgPath:rightImgUrl,
-            leftImgPath:leftImgUrl
-        }
-
-        $.ajax({
-            url:baseUrl+"car",
-            method: 'post',
-            contentType:"application/json",
-            data: JSON.stringify(car),
-            dataType:"json",
-            success:function (resp){
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: resp.message,
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-                getAllCars();
-                $('#addCarModel').modal('toggle');
-            },
-            error:function (error){
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: JSON.parse(error.responseText).message,
-                    showConfirmButton: false,
-                    timer: 2000
-                })
-            }
-        });
-
-    });
 
 </script>
 
