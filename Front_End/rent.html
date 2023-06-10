@@ -56,7 +56,7 @@
 <section id="mainOfRent" class="d-flex">
     <div id="carDetailsDiv" class="d-flex flex-column align-items-center">
         <div id="imageDiv">
-            <img src="assets/img/car2.jpg" alt="">
+            <img src="" alt="This is the picture of car" id="myCarImg">
         </div>
         <div class="row container-fluid d-flex justify-content-center mt-5">
             <div class="col-4 border-end">
@@ -189,10 +189,7 @@
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.name);
 
-        let carNum = sessionStorage.getItem("carNum");
-
         setCarDetails();
-
     };
 
     // set car details to the text fields
@@ -203,6 +200,7 @@
             url: baseUrl + "car?regNo=" + carNum,
             method: 'get',
             success: function (resp) {
+                $('#myCarImg').attr('src',resp.data.leftImgPath);
                 $('#vehicleNum').text(resp.data.regNum);
                 $('#vehicleBrand').text(resp.data.brand);
                 $('#vehicleType').text(resp.data.type);

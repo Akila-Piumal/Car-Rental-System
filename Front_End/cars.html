@@ -35,21 +35,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav " id="navListInCars">
-                <li class="nav-item" style="width: 74px">
-                    <a class="nav-link" aria-current="page" href="#" id="homeLinkInCars">Home</a>
+            <ul class="navbar-nav gap-5" id="navListInCars">
+                <li class="nav-item" style="width: 74px" id="homeLinkInCars">
+                    <a class="nav-link fw-bolder navBarLinks" aria-current="page" href="#" style="color: rgba(0,0,0,0.89)">Home</a>
                 </li>
-                <li class="nav-item" style="width: 70px">
-                    <a class="nav-link active fw-bold" href="cars.html" style="color: #ef6d48">Cars</a>
+                <li class="nav-item" style="width: 70px" id="carsLinkInCars">
+                    <a class="nav-link active fw-bolder navBarLinks" href="cars.html" style="color: #ef6d48; font-size: 18px ; border-bottom: 3px solid orange">Cars</a>
                 </li>
-                <li class="nav-item" style="width: 106px">
-                    <a class="nav-link" href="#">Contact Us</a>
+                <li class="nav-item" style="width: 120px">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
                 </li>
-                <li class="nav-item" id="signInLink" style="width: 73px">
-                    <a class="nav-link" href="#">Sign In</a>
+
+                <li class="nav-item" id="signInLink" style="width: 72px;">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" id="signInInIndex" data-bs-target="#loginModel" data-bs-toggle="modal" style="color: rgba(0,0,0,0.89)">Sign In</a>
                 </li>
-                <li class="nav-item" id="signUpLink" >
-                    <a class="nav-link" href="#">Sign Up</a>
+                <li class="nav-item" id="signUpLink">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" id="signUpInIndex" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: rgba(0,0,0,0.89)">Sign Up</a>
                 </li>
 
             </ul>
@@ -57,20 +58,152 @@
         <div id="loginImageDiv">
             <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40" class="d-inline-block align-text-top" id="loginImage">
         </div>
-        <small class="text-white text-muted" id="userName"></small>
+        <small class="fw-bolder gradient-text" id="userName" ></small>
+
 
     </div>
 </nav>
 
 <main class="d-flex">
+
+    <!--    Login Model-->
+    <div aria-hidden="true" aria-labelledby="loginModelLabel" class="modal fade" id="loginModel" tabindex="-1"
+         data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content " style="width: 400px;">
+                <div class="modal-header mt-3">
+                    <h5 class="modal-title position-absolute fw-bolder fs-3" id="loginModelLabel">LOGIN</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                            type="button"></button>
+                </div>
+                <div class="modal-body" style="height: 400px ; width: 400px">
+                    <section class="d-flex flex-column mt-1 align-items-center" style="height: 308px">
+                        <form action="#" id="loginForm" style="height: 147px; width: 100%" class="d-flex flex-column">
+                            <div class="form-floating ">
+                                <input class="form-control form-control-sm" id="emailInputInLogin" type="email" name="email">
+                                <label for="emailInputInLogin">Email address</label>
+                            </div>
+                            <div class="form-floating mt-3">
+                                <input class="form-control form-control-sm" id="passwordInputInLogin" type="password" name="password">
+                                <label for="passwordInputInLogin">Password</label>
+                            </div>
+                        </form>
+
+                        <div>
+                            <small class="text-muted">Forget Your Password <span><a href="#" style="color: #ffdd54">Click Here</a></span></small>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-center mt-3">
+                            <a class="btn col-12" role="button" id="btnLogin" style="background-color: #ffdd54">Login</a>
+                        </div>
+
+                        <div class="mt-3">
+                            <small class="text-muted">Or Login With</small>
+                        </div>
+
+                        <div class="mt-3 d-flex justify-content-center col-12 gap-3">
+                            <a class="btn col-5" role="button" id="btnGoogle" style="background-color: #ffdd54">Google</a>
+                            <a class="btn col-5" role="button" id="btnFacebook" style="background-color: #ffdd54">Facebook</a>
+                        </div>
+
+                        <div class="mt-3">
+                            <small class="text-muted">Don't Have An Account <span><a href="#" style="color: #ffdd54">Create One</a></span></small>
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Model Ends-->
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header position-relative">
+                    <h1 class="modal-title fs-3 position-absolute fw-bolder" id="staticBackdropLabel">SIGN UP</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height: 477px ; width: 486px">
+                    <form class="row g-3 ">
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="nicNo">NIC No.</label>
+                            <input class="form-control form-control-sm " id="nicNo" type="text">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputName">Name</label>
+                            <input class="form-control form-control-sm" id="inputName" type="text">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputAddress">Address</label>
+                            <input class="form-control form-control-sm" id="inputAddress"
+                                   type="text">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="phone">Contact No.</label>
+                            <input class="form-control form-control-sm" id="phone" type="number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="licenceNo">Licence No.</label>
+                            <input class="form-control form-control-sm" id="licenceNo" type="text">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="nicImgInput">NIC</label>
+                            <input id="nicImgInput" name="nic" type="file" class=" form-control form-control-sm">
+                        </div>
+
+                        <div class="col-6">
+                            <label class="form-label form-control-sm mb-0 fw-bold" for="licenceImgInput">Driving Licence</label>
+                            <input id="licenceImgInput" name="licence" type="file" class="form-control form-control-sm">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputEmail">Email</label>
+                            <input class="form-control form-control-sm" id="inputEmail" type="email">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label form-control-sm mb-0 fw-bold"
+                                   for="inputPassword">Password</label>
+                            <input class="form-control form-control-sm" id="inputPassword"
+                                   type="password">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary col-5" data-bs-dismiss="modal">Close</button>
+                    <a class="btn col-5" role="button" id="btnSignUp" style="background-color: #ffdd54">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <section id="sideSec" class="mt-5 pt-5 d-flex flex-column align-items-center px-5">
         <h2 id="carsTopic">Our Cars</h2>
 
         <div id="dropDownSec" class="pt-5">
-            <button class="dropbtn py-3 mb-4" id="btnAllCars">All Cars</button>
+<!--            <button class="dropbtn py-3 mb-4" id="btnAllCars">All Cars</button>-->
+            <button class="fill py-3 mb-4" id="btnAllCars">All Cars</button>
 
             <div class="dropdown mb-4">
-                <button class="dropbtn py-3">Fuel Type</button>
+<!--                <button class="dropbtn py-3">Fuel Type</button>-->
+                <button class="fill py-3">Fuel Type</button>
                 <div class="dropdown-content">
                     <a href="#" onclick="setCars('fuelType','Petrol')">Petrol</a>
                     <a href="#" onclick="setCars('fuelType','Diesel')">Diesel</a>
@@ -80,7 +213,8 @@
             </div>
 
             <div class="dropdown mb-4">
-                <button class="dropbtn py-3">Brand</button>
+<!--                <button class="dropbtn py-3">Brand</button>-->
+                <button class="fill py-3">Brand</button>
                 <div class="dropdown-content">
                     <a href="#" onclick="setCars('brand','BMW')">BMW</a>
                     <a href="#" onclick="setCars('brand','Suzuki')">Suzuki</a>
@@ -95,7 +229,8 @@
             </div>
 
             <div class="dropdown mb-4">
-                <button class="dropbtn py-3">Type</button>
+<!--                <button class="dropbtn py-3">Type</button>-->
+                <button class="fill py-3">Type</button>
                 <div class="dropdown-content">
                     <a href="#" onclick="setCars('type','Luxury')">Luxury</a>
                     <a href="#" onclick="setCars('type','Standard')">Standard</a>
@@ -105,7 +240,8 @@
             </div>
 
             <div class="dropdown mb-4">
-                <button class="dropbtn py-3">Transmission</button>
+<!--                <button class="dropbtn py-3">Transmission</button>-->
+                <button class="fill py-3">Transmission</button>
                 <div class="dropdown-content">
                     <a href="#" onclick="setCars('transmission','Manual')">Manual</a>
                     <a href="#" onclick="setCars('transmission','Auto')">Auto</a>
@@ -113,7 +249,8 @@
             </div>
 
             <div class="dropdown mb-4">
-                <button class="dropbtn py-3">Passenger Count</button>
+<!--                <button class="dropbtn py-3">Passenger Count</button>-->
+                <button class="fill py-3">Passenger Count</button>
                 <div class="dropdown-content">
                     <a href="#" onclick="setCars('passengerCount',2)">2</a>
                     <a href="#" onclick="setCars('passengerCount',3)">3</a>
@@ -129,12 +266,95 @@
     <section id="mainOfCars" class="mt-5 pt-5 d-flex flex-wrap gap-4 mx-5 px-5">
 
     </section>
+
+
+    <div aria-hidden="true" aria-labelledby="myModelLabel" class="modal fade" id="myModel" tabindex="-1"
+         data-bs-keyboard="false" style="z-index: 999999">
+        <div class="modal-dialog">
+            <div class="modal-content " style="width: 400px;">
+                <div class="modal-header pt-0 pb-0"></div>
+                <div class="modal-body" style="height: 425px ; width: 400px">
+                    <section class="d-flex flex-column mt-1 align-items-center" style="height: 308px">
+                        <form id="carDetailsForm" style="height: 147px; width: 100%" class="row g-3">
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="RegNumInVehiDetails">Register No.</label>
+                                <input class="form-control form-control-sm " id="RegNumInVehiDetails" type="text" name="RegNum">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="BrandInVehiDetails">Brand</label>
+                                <input class="form-control form-control-sm " id="BrandInVehiDetails" type="text" name="brand">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="NameInVehiDetails">Name</label>
+                                <input class="form-control form-control-sm " id="NameInVehiDetails" type="text" name="name">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="TypeInVehiDetails">Type</label>
+                                <input class="form-control form-control-sm " id="TypeInVehiDetails" type="text" name="type">
+                            </div>
+
+                            <div class="col-4">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="ColorInVehiDetails">Color</label>
+                                <input class="form-control form-control-sm " id="ColorInVehiDetails" type="color" name="color">
+                            </div>
+
+                            <div class="col-4">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="PassengersInVehiDetails">Passengers</label>
+                                <input class="form-control form-control-sm " id="PassengersInVehiDetails" type="text" name="passengers">
+                            </div>
+
+                            <div class="col-4">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="FuelTypeInVehiDetails">Fuel Type</label>
+                                <input class="form-control form-control-sm " id="FuelTypeInVehiDetails" type="text" name="FuelType">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="TransmissionInVehiDetails">Transmission Type</label>
+                                <input class="form-control form-control-sm " id="TransmissionInVehiDetails" type="text" name="transmissionType">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="DailyRateInVehiDetails">Daily Rate(Rs.)</label>
+                                <input class="form-control form-control-sm " id="DailyRateInVehiDetails" type="text" name="DailyRate">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="MonthlyRateInVehiDetails">Monthly Rate(Rs.)</label>
+                                <input class="form-control form-control-sm " id="MonthlyRateInVehiDetails" type="text" name="monthlyRate">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label form-control-sm mb-0"
+                                       for="StatusInVehiDetails">Status</label>
+                                <input class="form-control form-control-sm " id="StatusInVehiDetails" type="text" name="status">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
 <script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
@@ -144,17 +364,21 @@
 
         var loggedUser=sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
+        console.log(userObject);
 
         // log wela innawanm
         if (userObject!=null){
             $('#homeLinkInCars').click(function (){
                 window.location.href = "home.html";
             });
+
             $('#loginImageDiv').css("display","inline-block");
-            $('#userName').text(userObject.userDet.name);
-            $('#signUpLink').css("display","none");
+            $('#userName').text(userObject.name);
             $('#signInLink').css("display","none");
-            $('#navListInCars').css("margin-left","70vw");
+            $('#signUpLink').css("display","none");
+            $('#navListInCars').css("margin-left","60vw");
+            $('#homeLinkInCars').css('width',"58px");
+            $('#carsLinkInCars').css('width',"51px");
         }else{
             $('#homeLinkInCars').click(function (){
                 window.location.href = "Index.html";
@@ -162,6 +386,138 @@
         }
     }
 
+    // Sign Up Process
+    $('#btnSignUp').click(function () {
+
+        // upload NIC and Licence Images
+        var data=new FormData();
+        let nicImgFile=$("#nicImgInput")[0].files[0];
+        let nicImgFilename=$("#nicImgInput")[0].files[0].name;
+        let licenceImgFile=$("#licenceImgInput")[0].files[0];
+        let licenceImgFilename=$("#licenceImgInput")[0].files[0].name;
+        data.append("nic",nicImgFile,nicImgFilename);
+        data.append("licence",licenceImgFile,licenceImgFilename);
+        data.append("lossDamageWaiver",licenceImgFile,licenceImgFilename);
+        data.append("frontImage",licenceImgFile,licenceImgFilename);
+        data.append("backImage",licenceImgFile,licenceImgFilename);
+        data.append("rightImage",licenceImgFile,licenceImgFilename);
+        data.append("leftImage",licenceImgFile,licenceImgFilename);
+
+        var nicImgUrl;
+        var licenceImgUrl;
+
+        $.ajax({
+            url:baseUrl+"upload",
+            method: 'post',
+            async:false,
+            contentType:false,
+            processData:false,
+            data:data,
+            success:function (resp){
+                nicImgUrl=baseUrl+resp.data.nicImgPath;
+                licenceImgUrl=baseUrl+resp.data.licenceImgPath;
+                console.log(nicImgUrl);
+                console.log(licenceImgUrl);
+            },
+            error:function (error){
+                alert(error.responseText.message);
+            }
+        });
+
+        // image uploading finished===============================================================
+
+
+
+        let nicNo = $('#nicNo').val();
+        let name = $('#inputName').val();
+        let address = $('#inputAddress').val();
+        let contactNo = $('#phone').val();
+        let licenceNo = $('#licenceNo').val();
+        let email = $('#inputEmail').val();
+        let password = $('#inputPassword').val();
+
+        let userDetails = {
+            id: nicNo,
+            name: name,
+            address: address,
+            contactNo: contactNo,
+            email: email,
+            licenceNo: licenceNo,
+            role: "user",
+            nicImgPath:nicImgUrl,
+            licenceImgPath:licenceImgUrl
+        }
+
+        let login = {
+            id: nicNo,
+            email: email,
+            password: password,
+            userDet: userDetails
+        }
+
+        $.ajax({
+            url: baseUrl + "login",
+            method: "post",
+            contentType: "application/json",
+            data: JSON.stringify(login),
+            dataType: "json",
+            success: function (resp) {
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: resp.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                $('#staticBackdrop').modal('toggle');
+            },
+            error: function (error) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+
+        });
+
+    });
+
+    // Login Process
+    $('#btnLogin').click(function () {
+        // let email = $('#emailInputInLogin').val();
+        // let password = $('#passwordInputInLogin').val();
+
+        var formData = $("#loginForm").serialize();
+
+        $.ajax({
+            url: baseUrl + "login",
+            data: formData,
+            dataType: 'json',
+            success:function (resp){
+                let role=resp.data.userDet.role;
+                if (role==="admin"){
+                    sessionStorage.setItem("user",JSON.stringify(resp.data.userDet));
+                    window.location.href = "adminDashBoard.html";
+                }else if(role==="user"){
+                    sessionStorage.setItem("user",JSON.stringify(resp.data.userDet));
+                    window.location.href = "home.html";
+                }
+            },
+            error:function (error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: JSON.parse(error.responseText).message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        });
+    });
 
     // set all cars in the start
     setAllCars();
@@ -185,19 +541,24 @@
         });
     }
 
-    //get the ca details from ajax request
+    //get the car details from ajax request
     function setCars(path,param) {
 
         $.ajax({
             url: baseUrl + "car/"+path+"/"+ param + "",
             method: 'get',
             success: function (resp) {
-                alert(resp.message);
                 setCarsByBrand(resp.data);
             },
             error: function (error) {
                 var jsObject = JSON.parse(error.responseText);
-                alert(jsObject.message);
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'error',
+                    title: jsObject.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
         });
     }
@@ -207,17 +568,51 @@
         $("#mainOfCars").empty();
         for (var car of data) {
             $("#mainOfCars").append(`
-                    <div id="carDiv" class="">
+                    <div id="carDiv" class="" style="position: relative">
                         <div id="box-img">
-                            <img src="assets/img/car1.jpg" alt="">
+                            <img src="`+car.leftImgPath+`" style="width: 300px; height: 200px" alt="">
                         </div>
                         <p id="carType">` + car.type + `</p>
                         <h2 id="carName">` + car.name + `</h2>
                         <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
-                        <a href="#" class="btn" id="btnRentOnCars">Rent Now</a>
+                        <h1 class="d-none" id="hideh1">`+car.regNum+`</h1>
+                        <a href="#" class="btn" id="btnViewCarDetails" onclick="(openCarDetails(this))">Car Details</a>
+                        <a href="rent.html" class="btn" id="btnRentOnCars" onclick="(saveCarDetailsTemp(this))">Rent Now</a>
                     </div>
         `);
         }
+    }
+
+    // Save the clicked car details temp
+    function saveCarDetailsTemp(object){
+        let regNum = $(object).parent().children(':eq(4)').text();
+        sessionStorage.setItem("carNum",regNum);
+    }
+
+    // Set Car Details to the Model
+    function openCarDetails(object){
+        let regNum = $(object).parent().children(':eq(4)').text();
+        $.ajax({
+            url: baseUrl + "car?regNo=" + regNum,
+            success:function (resp){
+                $('#RegNumInVehiDetails').val(regNum);
+                $('#BrandInVehiDetails').val(resp.data.brand);
+                $('#NameInVehiDetails').val(resp.data.name);
+                $('#TypeInVehiDetails').val(resp.data.type);
+                $('#ColorInVehiDetails').val(resp.data.color);
+                $('#PassengersInVehiDetails').val(resp.data.noOfPassengers);
+                $('#TransmissionInVehiDetails').val(resp.data.transmissionType);
+                $('#FuelTypeInVehiDetails').val(resp.data.fuelType);
+                $('#DailyRateInVehiDetails').val(resp.data.dailyRate);
+                $('#MonthlyRateInVehiDetails').val(resp.data.monthlyRate);
+                $('#StatusInVehiDetails').val(resp.data.status);
+            },
+            error:function (error){
+
+            }
+        })
+
+        $('#myModel').modal('show');
     }
 
 </script>

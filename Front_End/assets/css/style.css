@@ -11,6 +11,9 @@
 }
 
 
+
+
+
 /*=====================  NAV BAR  ========================*/
 
 #navBarNew{
@@ -20,20 +23,32 @@
     width: 100%;
     top: 0;
     right: 0;
+    background: rgba(255, 255, 255, 0.84);
+    z-index: 9999;
 }
 
 #navListInHome{
     margin-left: 70vw;
 }
 #navListInHome li a:hover{
-    color: #ef6d48;
+    color: #ef6d48!important;
+}
+
+.gradient-text {
+    background-color: #f3ec78;
+    background-image: linear-gradient(45deg, #f3ec78, #d41043);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
 }
 
 #navListInCars{
     margin-left: 50vw;
 }
 #navListInCars li a:hover{
-    color: #ef6d48;
+    color: #ef6d48!important;
 }
 
 #navListInIndex{
@@ -50,12 +65,29 @@
     color: #ef6d48;
 }
 
+.navBarLinks{
+    font-size: 16px;
+    transition: font-size 0.3s ease;
+}
+.navBarLinks:hover {
+    font-size: 19px;
+}
+
 /*=================== NAVBAR ENDS===============================*/
 
 
 
+/*====================    LOGON MODEL  =============================*/
 
-/*===============  Home Page  ====================================*/
+
+.modal-header{
+    border-bottom: none!important;
+}
+
+
+
+
+    /*===============  Home Page  ====================================*/
 
 
 /*navBar*/
@@ -106,8 +138,8 @@
 }
 #carLink{
     color: #FE613C!important;
-
 }
+
 
 /*====================================================*/
 
@@ -192,7 +224,7 @@
 /*HomePage 2nd Secton*/
 
 #secTwo{
-    background-color: #000000;
+    background-color: #000000e0;
     min-height: 600px;
 }
 
@@ -233,9 +265,10 @@
     font-family: 'Tilt Warp', cursive;
 }
 #btnSignUpLater{
-    background-color: #FFCC01;
+    background-color: #ff7b0e;
     height: 3rem;
     width: 10rem;
+    color: white;
 }
 #conUsText{
     color: #474fa0;
@@ -248,7 +281,7 @@
 }
 #developedByDiv{
     height: 3.5rem;
-    background-color: black;
+    background-color: #000000e0;
 }
 .socialIconsDown:hover{
     color: #FD5F3C!important;
@@ -301,17 +334,6 @@ html::-webkit-scrollbar-thumb{
 
 /*Dropdown*/
 
-.dropbtn {
-    background-color: #ff5630;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width: 170px;
-    border-radius: 10px;
-    z-index: 1;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -331,20 +353,66 @@ html::-webkit-scrollbar-thumb{
 .dropdown-content a:hover {
     background-color: #f1f1f1;
     color: #FE9D38;
+    font-weight: bold;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown:hover .dropbtn {
-    background-color: #ef6d48;
-    font-weight: bold;
-}
 .dropbtn:hover{
-    background-color: #ef6d48;
+    background-color: #c7a33f;
     font-weight: bold;
 }
+.dropdown-content{
+   z-index: 1000000;
+}
+
+.fill {
+    position: relative;
+    height: 45px;
+    width: 150px;
+    margin: 10px 7px;
+    padding: 5px 5px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #383736;
+    border: 2px #383736 solid;
+    border-radius: 4px;
+    text-transform: uppercase;
+    outline: 0;
+    overflow:hidden;
+    background: none;
+    z-index: 1;
+    cursor: pointer;
+    transition:         0.3s ease-in;
+    -o-transition:      0.8s ease-in;
+    -ms-transition:     0.8s ease-in;
+    -moz-transition:    0.8s ease-in;
+    -webkit-transition: 0.8s ease-in;
+}
+
+.fill:hover {
+    color: whitesmoke;
+}
+
+.fill:before {
+    content: "";
+    position: absolute;
+    background: #383736;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: -1;
+    -webkit-transition: top 0.3s ease-in;
+}
+
+.fill:hover:before {
+    top: 0;
+}
+
 
 /*mainOfCars*/
 
@@ -355,6 +423,18 @@ html::-webkit-scrollbar-thumb{
     gap: 1rem;
     margin-top: 2rem;
     justify-content: center;
+    position: relative;
+}
+#btnViewCarDetails{
+    position: absolute;
+    top: 60%;
+    right: 10px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    background-color: #1b9b5f;
+    font-weight: bold;
 }
 #carDiv{
     padding: 10px;
@@ -398,25 +478,62 @@ html::-webkit-scrollbar-thumb{
     color: #282626;
 }
 #btnRentOnCars{
+    position: relative;
     display: flex;
     justify-content: center;
-    background-color: #474fa0;
-    color: #fff;
+    border: 1px solid black;
+    color: black;
+    font-weight: bolder;
+    /*background-color: #474fa0;*/
+    /*color: #fff;*/
+
     padding: 10px;
     border-radius: 0.5rem;
+    transition:         0.2s ease-in;
+    -o-transition:      0.8s ease-in;
+    -ms-transition:     0.8s ease-in;
+    -moz-transition:    0.8s ease-in;
+    -webkit-transition: 0.8s ease-in;
 }
-#btnRentOnCars:hover{
-    background-color: #ef6d48;
+
+#btnRentOnCars:hover {
+    /*background-color: #ef6d48;*/
+    /*background-color: #ef6d48;*/
+    /*font-weight: bolder;*/
+    color: whitesmoke;
+}
+
+#btnRentOnCars:before {
+    content: "";
+    position: absolute;
+    background: #383736;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: -1;
+    -webkit-transition: top 0.3s ease-in;
+}
+#btnRentOnCars:hover:before {
+    top: 0;
 }
 
 /*======================================================================================*/
 /*Signup Model*/
+#staticBackdrop{
+    z-index: 100000;
+}
+
 #staticBackdropLabel{
     left: 0;
     right: 0;
     width: max-content;
     margin: auto;
 }
+#loginModel{
+    z-index: 100000;
+}
+
 #loginModelLabel{
     left: 0;
     right: 0;
@@ -473,8 +590,8 @@ html::-webkit-scrollbar-thumb{
     border-radius: 10px;
 }
 #imageDiv{
-    width: 80%;
-    height: 300px;
+    width: 400px;
+    height: 260px;
 }
 #imageDiv img{
     width: 100%;
@@ -531,24 +648,31 @@ html::-webkit-scrollbar-thumb{
 }
 #detailsDiv div{
     width: 20%;
-    /*background-color: #0a58ca;*/
     height: 150px;
     border-radius: 17px;
+    background: linear-gradient(81deg, #ffc75f, #ffec61cf,  #f2f1e6cf);
 }
-#customersDiv {
-    /*box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0em 1em 1em rgb(216 216 216);*/
-    background: linear-gradient(45deg, #845ec2,#d65db1,#ff6f91,#ff9671,#ffc75f,#f9f871);
+#dashBoardImgDiv{
+    width: max-content;
+    left: 0;
+    right: 0;
+    position: relative;
+    margin: auto;
 }
-#carsDiv{
-    background: linear-gradient(135deg, #24ff72, #2196f3);
-}
-#driversDiv{
-   background: linear-gradient(135deg, #f403d1,#64b5f6);
-}
+/*#customersDiv {*/
+/*    !*box-shadow: inset 0 -3em 3em rgb(255 255 255), 0 0 0 2px rgb(255 255 255), 0em 1em 1em rgb(216 216 216);*!*/
+/*    background: linear-gradient(45deg, #845ec2,#d65db1,#ff6f91,#ff9671,#ffc75f,#f9f871);*/
+/*}*/
+/*#carsDiv{*/
+/*    background: linear-gradient(135deg, #24ff72, #2196f3);*/
+/*}*/
+/*#driversDiv{*/
+/*   background: linear-gradient(135deg, #f403d1,#64b5f6);*/
+/*}*/
 
-#bookingsDiv{
-    background: linear-gradient(135deg, #ffec61,#f321d7);
-}
+/*#bookingsDiv{*/
+/*    background: linear-gradient(135deg, #ffec61,#f321d7);*/
+/*}*/
 
 /*===============================================================================================================*/
 
@@ -575,13 +699,8 @@ html::-webkit-scrollbar-thumb{
     text-align: center;
 }
 #tblCarDetails th{
-    background-color: #d0def2;
-    padding: 0.75rem 0.7rem;
-    /*text-transform: uppercase;*/
-    letter-spacing: 0.1rem;
-    font-size: 0.8rem;
-    font-weight: 1000;
-    font-family: 'Kanit', sans-serif;
+    background-color: #ffc75fd1;
+    padding: 0.75rem 1rem;
 }
 #tblCarDetailsBody td{
     padding: 1rem 0.7rem;
@@ -589,18 +708,64 @@ html::-webkit-scrollbar-thumb{
     font-size: 0.8rem;
 }
 tr:nth-child(even){
-    background-color: #f3f8fe;
+    background-color: #eec27138;
 }
 #addCarModelLabel{
     left: 0;
     right: 0;
     width: max-content;
     margin: auto;
-    color: #ff2f0b!important;
 }
 
 
 /*===================================================================================================================*/
+
+
+/*===================== Admin Driver manage  =====================================*/
+
+#mainOfAdminDrivers {
+    margin-top: 4.6rem !important;
+}
+
+#btnAddDriver{
+    background: linear-gradient(135deg, #ffc961,#ff2f0b);
+    border: none;
+}
+
+#driversTableSec{
+    display: grid;
+    /*height: 100vh;*/
+    justify-content: center;
+    align-items: center;
+}
+
+
+#tblDriverDetails{
+    border-collapse: collapse;
+    box-shadow: 20px 20px 20px 5px #a7bad3;
+    background-color: white;
+    text-align: center;
+}
+#tblDriverDetails th{
+    background-color: #ffc75fd1;
+    padding: 0.75rem 3rem;
+}
+
+#tblDriverDetailsBody td{
+    padding: 1rem 0.7rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+#addCarModelLabel{
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin: auto;
+}
+
+
+
+
 
 /*=================  Admin Rent Requests  =================*/
 
@@ -670,61 +835,109 @@ tr:nth-child(even){
 
 /*============================================================================================*/
 
-/*===================== Admin Driver manage  =====================================*/
 
-#mainOfAdminDrivers {
-    margin-top: 4.6rem !important;
+
+
+
+
+/*======================*/
+
+:root{
+    --black-color:#e7280f;
+    --white-color:#fff;
+    --sky-color:#E4E9F7;
+    --light-black: #ffb939;
+
+    transition: 0.5s ease;
+}
+.logo_content .logo .logo_name{
+    font-size: 20px;
+    font-weight: 400;
 }
 
-#btnAddDriver{
-    background: linear-gradient(135deg, #ffc961,#ff2f0b);
-    border: none;
+.dashBoardCon{
+    width: 98.7vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
 }
+.DashBoardDetail{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
 
-#driversTableSec{
-    display: grid;
-    /*height: 100vh;*/
+
+}
+.shortCutCon{
+    width: 100%;
+    height: 156px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    gap: 54px;
     justify-content: center;
-    align-items: center;
+    margin-top: 150px;
+
 }
+.dashBoardCard{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 1);
+}
+.cardDetail{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: row;
+}
+.cardLink{
+    width: 100%;
+    height: 25%;
+}
+.cardImg{
+    width: 40%;
+    height: 100%;
+    position: relative;
+}
+.cardText{
+    /*width: 60%;*/
+    /*height: 100%;*/
 
+}
+.cardImg>img{
+    width: 70%;
+    margin-top: 28px;
+    margin-left: 17px;
+}
+.cardText>h2{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    transform: translateY(32px);
+}
+.cardText>h1{
+    transform: translate(13px, 26px);
+    width: 100%;
 
-#tblDriverDetails{
-    border-collapse: collapse;
-    box-shadow: 20px 20px 20px 5px #a7bad3;
-    background-color: white;
+}
+.cardLink{
+    position: relative;
+    background: #E7280FFF;
+}
+.cardLink>h4{
+    font-size: 12px;
+    font-weight: 400;
+    transform: translateY(11px);
+    color: white;
+    padding-right: -44px;
     text-align: center;
 }
-#tblDriverDetails th{
-    background-color: #d0def2;
-    padding: 0.75rem 3rem;
-    /*text-transform: uppercase;*/
-    letter-spacing: 0.1rem;
-    font-size: 0.8rem;
-    font-weight: 800;
-    font-family: 'Kanit', sans-serif;
-}
-
-
-
-#tblDriverDetailsBody td{
-    padding: 1rem 0.7rem;
-    text-align: center;
-    font-size: 0.8rem;
-}
-tr:nth-child(even){
-    background-color: #f3f8fe;
-}
-#addCarModelLabel{
-    left: 0;
-    right: 0;
-    width: max-content;
-    margin: auto;
-    color: #ff2f0b!important;
-}
-
-
-
 
 
 

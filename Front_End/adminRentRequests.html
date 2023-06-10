@@ -113,10 +113,16 @@
                         <input type="text" class="form-control fw-bold" id="driverId" readonly>
                     </div>
 
+<!--                    <div class="col-8 mt-1">-->
+<!--                        <label for="driverName" class="form-label fw-bold">Driver Name</label>-->
+<!--                        <input type="text" class="form-control fw-bold" id="driverName" readonly>-->
+<!--                    </div> -->
+
                     <div class="col-8 mt-1">
-                        <label for="driverName" class="form-label fw-bold">Driver Name</label>
-                        <input type="text" class="form-control fw-bold" id="driverName" readonly>
+                        <label for="driverNames" class="form-label fw-bold">Driver Name</label>
+                        <select class="form-select" name="driverNames" id="driverNames"></select>
                     </div>
+
                 </div>
             </div>
 
@@ -139,6 +145,44 @@
 
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    // when the window is loaded
+    window.onload = function () {
+        $.ajax({
+            url:baseUrl+"driver",
+            success:function (resp){
+                for (const data of resp.data) {
+                    $('#driverNames').append($('<option>',{
+                        value: data.name,
+                        text: data.name
+                    }));
+                }
+            },
+            error:function (error){
+                alert(error.responseText.message);
+            }
+        })
+    }
+
+    $('#btnAccept').click(function (){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "Accepted",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    })
+
+    $('#btnReject').click(function (){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: "Rejected",
+            showConfirmButton: false,
+            timer: 2000
+        })
+    })
 
     getAllRents();
 

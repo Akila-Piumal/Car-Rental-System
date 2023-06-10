@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/user")
 @CrossOrigin
@@ -21,5 +23,11 @@ public class UserController {
     public ResponseUtil getUserById(String id){
         UserDTO userById = service.getUserById(id);
         return new ResponseUtil("200","success",userById);
+    }
+
+    @GetMapping
+    public ResponseUtil getAllUsers(){
+        ArrayList<UserDTO> all = service.getAll();
+        return new ResponseUtil("200","success",all);
     }
 }

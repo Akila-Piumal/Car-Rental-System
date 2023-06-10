@@ -32,6 +32,7 @@ public class CarController {
 
     @GetMapping(params = "regNo")
     public ResponseUtil getCarByRegNo(String regNo){
+        System.out.println("Method called");
 //        CarDTO carByRegNo = service.getCarByRegNo(regNo);
         CarDTO dto = service.getCarDetailsByRegNum(regNo);
         return new ResponseUtil("200","Success",dto);

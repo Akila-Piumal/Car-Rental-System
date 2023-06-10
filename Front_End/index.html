@@ -63,27 +63,45 @@
         <div class="modal-dialog">
             <div class="modal-content " style="width: 400px;">
                 <div class="modal-header mt-3">
-                    <h5 class="modal-title position-absolute fw-bolder fs-3" id="loginModelLabel">Login</h5>
+                    <h5 class="modal-title position-absolute fw-bolder fs-3" id="loginModelLabel">LOGIN</h5>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
                             type="button"></button>
                 </div>
-                <div class="modal-body" style="height: 350px ; width: 400px">
-                    <section class="d-flex flex-column justify-content-evenly mt-1" style="height: 308px">
-                        <form action="#" id="loginForm" style="height: 200px" class="d-flex flex-column justify-content-evenly">
+                <div class="modal-body" style="height: 400px ; width: 400px">
+                    <section class="d-flex flex-column mt-1 align-items-center" style="height: 308px">
+                        <form action="#" id="loginForm" style="height: 147px; width: 100%" class="d-flex flex-column">
                             <div class="form-floating ">
                                 <input class="form-control form-control-sm" id="emailInputInLogin" type="email" name="email">
                                 <label for="emailInputInLogin">Email address</label>
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mt-3">
                                 <input class="form-control form-control-sm" id="passwordInputInLogin" type="password" name="password">
                                 <label for="passwordInputInLogin">Password</label>
                             </div>
                         </form>
 
-
-                        <div class="col-12 d-flex justify-content-center">
-                            <a class="btn btn-outline-primary col-6" role="button" id="btnLogin">Login</a>
+                        <div>
+                            <small class="text-muted">Forget Your Password <span><a href="#" style="color: #ffdd54">Click Here</a></span></small>
                         </div>
+
+                        <div class="col-12 d-flex justify-content-center mt-3">
+                            <a class="btn col-12" role="button" id="btnLogin" style="background-color: #ffdd54">Login</a>
+                        </div>
+
+                        <div class="mt-3">
+                            <small class="text-muted">Or Login With</small>
+                        </div>
+
+                        <div class="mt-3 d-flex justify-content-center col-12 gap-3">
+                            <a class="btn col-5" role="button" id="btnGoogle" style="background-color: #ffdd54">Google</a>
+                            <a class="btn col-5" role="button" id="btnFacebook" style="background-color: #ffdd54">Facebook</a>
+                        </div>
+
+                        <div class="mt-3">
+                            <small class="text-muted">Don't Have An Account <span><a href="#" style="color: #ffdd54">Create One</a></span></small>
+                        </div>
+
+
                     </section>
                 </div>
             </div>
@@ -97,7 +115,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header position-relative">
-                    <h1 class="modal-title fs-3 position-absolute fw-bolder" id="staticBackdropLabel">Sign Up</h1>
+                    <h1 class="modal-title fs-3 position-absolute fw-bolder" id="staticBackdropLabel">SIGN UP</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="height: 477px ; width: 486px">
@@ -158,8 +176,8 @@
                     </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="btnSignUp">Sign Up</button>
+                    <button type="button" class="btn btn-secondary col-5" data-bs-dismiss="modal">Close</button>
+                    <a class="btn col-5" role="button" id="btnSignUp" style="background-color: #ffdd54">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -175,8 +193,12 @@
                 <h1 class="fw-bolder homeText " id="easyCarText">Easy Car Rental</h1>
             </div>
 
-            <button type="button" class="rounded-5 border-0 text-white mt-5 fw-bold" id="btnBookNow">Booking Now
+            <button type="button" class="rounded-5 border-0 text-white mt-5 fw-bold" id="btnBookNow" data-bs-target="#loginModel" data-bs-toggle="modal">Booking Now
             </button>
+
+<!--            <li class="nav-item" style="width: 72px;">-->
+<!--                <a class="nav-link" href="#" id="signInInIndex" data-bs-target="#loginModel" data-bs-toggle="modal">Sign In</a>-->
+<!--            </li>-->
 
         </div>
 
@@ -259,8 +281,9 @@
                     HOUR</h1>
             </div>
             <div class="d-flex justify-content-center">
-                <button type="button" class="rounded-2 border-0 mt-5 fw-bolder fs-5" id="btnSignUpLater">Sign Up Now!
+                <button type="button" class="rounded-2 border-0 mt-5 fw-bolder fs-5" id="btnSignUpLater" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Sign Up Now!
                 </button>
+
             </div>
         </div>
 
@@ -316,7 +339,8 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
