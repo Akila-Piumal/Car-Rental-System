@@ -36,7 +36,7 @@
                     <a class="nav-link navBarLinks fw-bolder" href="cars.html" style="color: rgba(0,0,0,0.89)">Cars</a>
                 </li>
                 <li class="nav-item" id="myRentsLinkOnHome">
-                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="myRents.html" style="color: rgba(0,0,0,0.89)">My rents</a>
                 </li>
                 <li class="nav-item" id="ContactUsLinkOnHome" >
                     <a class="nav-link navBarLinks fw-bolder" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
@@ -48,7 +48,7 @@
             <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
                  class="d-inline-block align-text-top">
         </div>
-        <small class="fw-bolder" id="userName" style="color: #474fa0"></small>
+        <small class="fw-bolder gradient-text" id="userName"></small>
 
     </div>
 </nav>
@@ -135,15 +135,14 @@
 
     window.onload = function () {
         var loggedUser = sessionStorage.getItem("user");
-        // var userRent = sessionStorage.getItem("rent");
         let userObject = JSON.parse(loggedUser);
-        // let rentObject = JSON.parse(userRent);
 
         $.ajax({
             url:baseUrl + "rent?userId=" + userObject.id,
             method:'get',
             success:function (resp){
-                sessionStorage.setItem("rent",resp.data);
+                sessionStorage.setItem("rent",JSON.stringify(resp.data));
+                $('#myRentsLinkOnHome').css("display","block");
             },
             error:function (error){
                 alert(error.responseText.message);
@@ -154,10 +153,6 @@
         $('#navListInHome').css("margin-left","55vw");
         $('#homeLinkOnHome').css('width',"58px");
         $('#CarsLinkOnHome').css('width',"51px");
-
-        if (sessionStorage.getItem("rent")!=null){
-            $('#myRentsLinkOnHome').css("display","block");
-        }
 
         setAllCars();
     };

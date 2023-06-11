@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Rents</title>
+    <link rel="icon" href="favIcon.png">
+    <meta name="keywords" content="Car Rental,Rent,Cars">
+    <meta name="description" content="Hi there! We are Easy Car Rentals. If you want a rent car please visit us..">
+    <meta name="author" content="Akila Piumal">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav gap-5 " id="navListInRent">
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder navBarLinks" href="home.html" style="color: rgba(0,0,0,0.89)">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder navBarLinks" href="cars.html" style="color: rgba(0,0,0,0.89)">Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active fw-bolder navBarLinks" aria-current="page" href="#"
+                       style="color: #ef6d48; font-size: 18px ; border-bottom: 3px solid orange">My Rents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
+                </li>
+                <li class="nav-item" id="myRentsLink">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
+                </li>
+
+            </ul>
+        </div>
+        <div>
+            <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
+                 class="d-inline-block align-text-top">
+        </div>
+        <small class="fw-bolder gradient-text" id="userNameInMyRents"></small>
+
+    </div>
+</nav>
+
+    <div id="carImageDivInMyRents">
+        <img src="assets/img/carNew.png" alt="car Image">
+    </div>
+
+    <section id="mainSecOfMyRents" style="position: relative">
+        <div id="tableDivOfMyRents" class=" d-flex justify-content-center">
+            <table id="tblRentDetailsInMyRents">
+                <thead>
+                <tr>
+                    <th>Rent ID</th>
+                    <th>Car No.</th>
+                    <th>Pickup Date</th>
+                    <th>Pickup Time</th>
+                    <th>Return Date</th>
+                    <th>Driver</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody id="tblRentDetailsBodyInMyRents">
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    window.onload=function (){
+        var loggedUser = sessionStorage.getItem("user");
+        var rent = sessionStorage.getItem("rent");
+        let userObject = JSON.parse(loggedUser);
+
+        $('#userNameInMyRents').text(userObject.name);
+
+        setAllRents();
+
+        function setAllRents() {
+            $("#tblRentDetailsBodyInMyRents").empty();
+
+            let rentArray = JSON.parse(rent);
+
+            for (let rent of rentArray ) {
+                let rentDetail=rent.rentDetail;
+
+                $("#tblRentDetailsBodyInMyRents").append(
+                    `<tr>
+                         <td>${rent.rentId}</td>
+                         <td>${rentDetail[0].carId}</td>
+                         <td>${rent.pickUpDate}</td>
+                         <td>${rent.pickUpTime}</td>
+                         <td>${rent.returnDate}</td>
+                         <td>${rentDetail[0].driverId}</td>
+                         <td>${rent.total}</td>
+                         <td class="fw-bold">${rent.status}</td>
+                     </tr>`
+                );
+            }
+
+
+            // $.ajax({
+            //     url: baseUrl+"car",
+            //     success: function (res) {
+            //         for (let c of res.data) {
+            //             let regNum = c.regNum;
+            //             let name = c.name;
+            //             let brand = c.brand;
+            //             let type = c.type;
+            //             let color = c.color;
+            //             let status = c.status;
+            //             let noOfPassengers = c.noOfPassengers;
+            //             let transmissionType = c.transmissionType;
+            //             let fuelType = c.fuelType;
+            //             let dailyRate = c.dailyRate;
+            //             let monthlyRate = c.monthlyRate;
+            //             let freeMileage = c.freeMileage;
+            //             let priceForExtraKM = c.priceForExtraKM;
+            //
+            //             let row = "<tr><td>" + regNum + "</td><td>" + brand + "</td><td>" + name + "</td><td>" + color + "</td><td>" + fuelType + "</td><td>" + transmissionType + "</td><td>" + dailyRate + "</td><td>" + monthlyRate + "</td><td>" + freeMileage + "</td><td>" + noOfPassengers + "</td><td>" + priceForExtraKM + "</td><td>" + type + "</td><td>" + status + "</td></tr>";
+            //             $("#tblCarDetailsBody").append(row);
+            //         }
+            //         bindRowClickEvents();
+            //     },
+            //     error: function (error) {
+            //         let message = JSON.parse(error.responseText).message;
+            //         alert(message);
+            //     }
+            // });
+        }
+
+    }
+</script>
+
+</body>
+</html>

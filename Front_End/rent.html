@@ -42,7 +42,7 @@
                     <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
                 </li>
                 <li class="nav-item" id="myRentsLink">
-                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="myRents.html" style="color: rgba(0,0,0,0.89)">My rents</a>
                 </li>
 
             </ul>
@@ -373,7 +373,7 @@
                     url:baseUrl + "rent?userId=" + ob.userId,
                     method:'get',
                     success:function (resp){
-                        sessionStorage.setItem("rent",resp.data);
+                        sessionStorage.setItem("rent",JSON.stringify(resp.data));
                     },
                     error:function (error){
                         alert(JSON.parse(error.responseText).message);

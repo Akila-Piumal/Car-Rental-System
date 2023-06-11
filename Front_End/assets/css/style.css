@@ -962,25 +962,41 @@ tr:nth-child(even){
 
 
 
+/*=========================================================================================*/
+/*================================================================================================
+======================================================================================================*/
 
+/*====================================================*/
+/*                My Rents*/
+/*========================================================*/
 
+#mainSecOfMyRents{
+    margin-top: 7rem;
+}
+#tblRentDetailsBodyInMyRents td{
+    padding: 1rem 0.7rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+#tblRentDetailsInMyRents{
+    border-collapse: collapse;
+    box-shadow: 20px 20px 20px 5px #a7bad3;
+    background-color: white;
+    text-align: center;
+}
+#tblRentDetailsInMyRents th{
+    background-color: #ffc75fd1;
+    padding: 0.8rem 2rem;
+}
+#carImageDivInMyRents{
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 217px;
+}
 
-
-/*#carDiv{*/
-/*    height: 300px;*/
-/*    width: 31%;*/
-/*    background-color: black;*/
-/*    border-radius: 1rem;*/
-/*    box-shadow: 1px 4px 41px rgba(0,0,0,0.1);*/
-/*}*/
-/*#box-img{*/
-/*    width: 90%;*/
-/*    height: 200px;*/
-/*}*/
-/*#box-img img{*/
-/*    width: 90%;*/
-/*    height: 100%;*/
-/*    border-radius: 1rem;*/
-/*    object-fit: cover;*/
-/*    object-position: center;*/
-/*}*/
+#carImageDivInMyRents img{
+    width: 800px;
+    height: 500px;
+}

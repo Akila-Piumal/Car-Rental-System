@@ -33,7 +33,7 @@
                     <a class="nav-link active fw-bolder navBarLinks" href="cars.html" style="color: #ef6d48; font-size: 18px ; border-bottom: 3px solid orange">Cars</a>
                 </li>
                 <li class="nav-item" id="myRentsLinkOnCars" style="width: 100px">
-                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="myRents.html" style="color: rgba(0,0,0,0.89)">My rents</a>
                 </li>
                 <li class="nav-item" style="width: 120px">
                     <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
@@ -374,7 +374,7 @@
             $('#carsLinkInCars').css('width',"51px");
 
             if (sessionStorage.getItem("rent")!=null){
-                $('#myRentsLink').css("display","block");
+                $('#myRentsLinkOnCars').css("display","block");
             }
         }else{
             $('#homeLinkInCars').click(function (){
