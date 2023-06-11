@@ -35,6 +35,9 @@
                 <li class="nav-item" id="CarsLinkOnHome" >
                     <a class="nav-link navBarLinks fw-bolder" href="cars.html" style="color: rgba(0,0,0,0.89)">Cars</a>
                 </li>
+                <li class="nav-item" id="myRentsLinkOnHome">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
+                </li>
                 <li class="nav-item" id="ContactUsLinkOnHome" >
                     <a class="nav-link navBarLinks fw-bolder" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
                 </li>
@@ -132,11 +135,30 @@
 
     window.onload = function () {
         var loggedUser = sessionStorage.getItem("user");
+        // var userRent = sessionStorage.getItem("rent");
         let userObject = JSON.parse(loggedUser);
+        // let rentObject = JSON.parse(userRent);
+
+        $.ajax({
+            url:baseUrl + "rent?userId=" + userObject.id,
+            method:'get',
+            success:function (resp){
+                sessionStorage.setItem("rent",resp.data);
+            },
+            error:function (error){
+                alert(error.responseText.message);
+            }
+        })
+
         $('#userName').text(userObject.name);
-        $('#navListInHome').css("margin-left","60vw");
+        $('#navListInHome').css("margin-left","55vw");
         $('#homeLinkOnHome').css('width',"58px");
         $('#CarsLinkOnHome').css('width',"51px");
+
+        if (sessionStorage.getItem("rent")!=null){
+            $('#myRentsLinkOnHome').css("display","block");
+        }
+
         setAllCars();
     };
 

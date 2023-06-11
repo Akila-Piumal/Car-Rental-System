@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Stack {
+    private int[] dataArray;
+    private int nextIndex;
+
+    public Stack(int size) {
+        dataArray = new int[size];
+        nextIndex = 0;
+    }
+
+    public void push(int data) {
+        if (isFull()) {
+            int[] tempArray = new int[dataArray.length * 2];
+            for (int i = 0; i < dataArray.length; i++) {
+                tempArray[i] = dataArray[i];
+            }
+
+            dataArray = tempArray;
+        }
+
+        dataArray[nextIndex] = data;
+        nextIndex++;
+    }
+
+    public boolean isFull() {
+        return nextIndex >= dataArray.length;
+    }
+
+    public void printStack() {
+        System.out.print("[");
+        for (int i = nextIndex - 1; i >= 0; i--) {
+            System.out.print(dataArray[i] + ", ");
+        }
+        System.out.print("\b\b]");
+    }
+
+    public void pop(){
+        nextIndex--;
+    }
+}

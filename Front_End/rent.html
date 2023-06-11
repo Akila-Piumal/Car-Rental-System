@@ -28,18 +28,21 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav " id="navListInHome">
+            <ul class="navbar-nav gap-5 " id="navListInRent">
                 <li class="nav-item">
-                    <a class="nav-link active fw-bold" aria-current="page" href="#" style="color: #ef6d48">Cart</a>
+                    <a class="nav-link active fw-bolder navBarLinks" aria-current="page" href="#" style="color: #ef6d48; font-size: 18px ; border-bottom: 3px solid orange">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="home.html">Home</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="home.html" style="color: rgba(0,0,0,0.89)">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cars.html">Cars</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="cars.html" style="color: rgba(0,0,0,0.89)">Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
+                </li>
+                <li class="nav-item" id="myRentsLink">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
                 </li>
 
             </ul>
@@ -188,7 +191,9 @@
         var loggedUser = sessionStorage.getItem("user");
         let userObject = JSON.parse(loggedUser);
         $('#userName').text(userObject.name);
-
+        if (sessionStorage.getItem("rent")!=null){
+            $('#myRentsLink').css("display","block");
+        }
         setCarDetails();
     };
 
@@ -221,7 +226,6 @@
             }
         });
     }
-
 
     $('#returnDate').change(function () {
         let pickUpDate = new Date($('#pickUpDate').val());
@@ -321,7 +325,6 @@
             method: 'get',
             async: false,
             success: function (resp) {
-                console.log("awaaa");
                 var rentIdNew = parseInt(resp.data.rentId) + 1;
                 sessionStorage.setItem("newRentId", rentIdNew);
             },
@@ -354,6 +357,7 @@
             rentDetail: rentDetails
         }
 
+        // send rent & rentDetails to the controller and get the rensponse
         $.ajax({
             url: baseUrl + "rent",
             method: 'post',
@@ -362,8 +366,24 @@
             contentType: "application/json",
             success: function (resp) {
                 $('#pendingText').css("display", "block")
+                $('#myRentsLink').css("display","block")
+
+                // Get all the rents of the specific customer and set those into session storage
+                $.ajax({
+                    url:baseUrl + "rent?userId=" + ob.userId,
+                    method:'get',
+                    success:function (resp){
+                        sessionStorage.setItem("rent",resp.data);
+                    },
+                    error:function (error){
+                        alert(JSON.parse(error.responseText).message);
+                    }
+
+                })
+
+                // Alert of Success
                 Swal.fire({
-                    position: 'top-end',
+                    position: 'center',
                     icon: 'success',
                     title: resp.message,
                     showConfirmButton: false,

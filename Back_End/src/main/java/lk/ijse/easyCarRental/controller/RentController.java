@@ -40,5 +40,11 @@ public class RentController {
         RentDTO lastRent = service.getLastRent();
         return new ResponseUtil("200","success",lastRent);
     }
+
+    @GetMapping(params = "userId")
+    public ResponseUtil getRentByUserId(String userId){
+        ArrayList<RentDTO> allByCustomerId = service.getByCustomerId(userId);
+        return new ResponseUtil("200","Success",allByCustomerId);
+    }
 }
 

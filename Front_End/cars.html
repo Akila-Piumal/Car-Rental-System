@@ -15,17 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
 </head>
 <body>
-<!--<header id="header">-->
-<!--    <a href="#" id="logo"><img src="assets/img/rent.png" alt=""></a>-->
 
-<!--    <ul id="navBar">-->
-<!--        <li><a href="index.html" class="links">Home</a></li>-->
-<!--        <li><a href="#cars" class="links" id="carLink">Cars</a></li>-->
-<!--        <li><a href="#contactUs" class="links">Contact Us</a></li>-->
-<!--        <li><a href="#signUp" class="links">Sign Up</a></li>-->
-<!--        <li><a href="#signIn" class="links">Sign In</a></li>-->
-<!--    </ul>-->
-<!--</header>-->
 <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -41,6 +31,9 @@
                 </li>
                 <li class="nav-item" style="width: 70px" id="carsLinkInCars">
                     <a class="nav-link active fw-bolder navBarLinks" href="cars.html" style="color: #ef6d48; font-size: 18px ; border-bottom: 3px solid orange">Cars</a>
+                </li>
+                <li class="nav-item" id="myRentsLinkOnCars" style="width: 100px">
+                    <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">My rents</a>
                 </li>
                 <li class="nav-item" style="width: 120px">
                     <a class="nav-link fw-bolder navBarLinks" href="#" style="color: rgba(0,0,0,0.89)">Contact Us</a>
@@ -376,9 +369,13 @@
             $('#userName').text(userObject.name);
             $('#signInLink').css("display","none");
             $('#signUpLink').css("display","none");
-            $('#navListInCars').css("margin-left","60vw");
+            $('#navListInCars').css("margin-left","55vw");
             $('#homeLinkInCars').css('width',"58px");
             $('#carsLinkInCars').css('width',"51px");
+
+            if (sessionStorage.getItem("rent")!=null){
+                $('#myRentsLink').css("display","block");
+            }
         }else{
             $('#homeLinkInCars').click(function (){
                 window.location.href = "Index.html";

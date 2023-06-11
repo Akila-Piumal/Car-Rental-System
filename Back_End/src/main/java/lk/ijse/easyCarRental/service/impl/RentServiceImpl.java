@@ -69,4 +69,10 @@ public class RentServiceImpl implements RentService {
         Rent lastRent = rentRepo.getLastRentFromNative();
         return mapper.map(lastRent,RentDTO.class);
     }
+
+    @Override
+    public ArrayList<RentDTO> getByCustomerId(String userId) {
+        List<Rent> allByUserId = rentRepo.findAllByUserId(userId);
+        return mapper.map(allByUserId,new TypeToken<ArrayList<RentDTO>>(){}.getType());
+    }
 }

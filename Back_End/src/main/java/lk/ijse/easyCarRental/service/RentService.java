@@ -13,4 +13,6 @@ public interface RentService {
     RentDTO getById(Long rentId);
 
     RentDTO getLastRent();
+
+    ArrayList<RentDTO> getByCustomerId(String userId);
 }

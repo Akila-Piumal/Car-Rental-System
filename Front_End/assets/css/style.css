@@ -50,6 +50,13 @@
 #navListInCars li a:hover{
     color: #ef6d48!important;
 }
+#navListInRent{
+    margin-left: 50vw;
+}
+
+#navListInRent li a:hover{
+    color: #ef6d48!important;
+}
 
 #navListInIndex{
     margin-left: 50vw;
@@ -138,6 +145,13 @@
 }
 #carLink{
     color: #FE613C!important;
+}
+
+#myRentsLinkOnHome{
+    display: none;
+}
+#myRentsLinkOnCars{
+    display: none;
 }
 
 
@@ -627,12 +641,16 @@ html::-webkit-scrollbar-thumb{
 #btnBookInCart{
     background-color: #474fa0;
     padding:10px 13px 10px 13px;
+    transition: background-color 0.8s ease;
 }
 #btnBookInCart:hover{
     background-color: #ef6d48;
 }
 #pendingText{
     color: red;
+    display: none;
+}
+#myRentsLink{
     display: none;
 }
 
