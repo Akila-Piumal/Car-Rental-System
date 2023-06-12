@@ -1,10 +1,12 @@
 package lk.ijse.easyCarRental.service.impl;
 
 import lk.ijse.easyCarRental.dto.RentDTO;
+import lk.ijse.easyCarRental.dto.RentDetailsDTO;
 import lk.ijse.easyCarRental.entity.Car;
 import lk.ijse.easyCarRental.entity.Rent;
 import lk.ijse.easyCarRental.entity.RentDetail;
 import lk.ijse.easyCarRental.repo.CarRepo;
+import lk.ijse.easyCarRental.repo.RentDetailRepo;
 import lk.ijse.easyCarRental.repo.RentRepo;
 import lk.ijse.easyCarRental.service.RentService;
 import org.modelmapper.ModelMapper;
@@ -23,6 +25,9 @@ public class RentServiceImpl implements RentService {
 
     @Autowired
     RentRepo rentRepo;
+
+    @Autowired
+    RentDetailRepo rentDetailRepo;
 
     @Autowired
     CarRepo carRepo;
@@ -75,4 +80,19 @@ public class RentServiceImpl implements RentService {
         List<Rent> allByUserId = rentRepo.findAllByUserId(userId);
         return mapper.map(allByUserId,new TypeToken<ArrayList<RentDTO>>(){}.getType());
     }
+
+    @Override
+    public boolean updateStatus(String status,Long rentId, String driverId) {
+        int rowCount = rentRepo.updateStatus(status, rentId);
+        int rowCount2 = rentDetailRepo.updateDriverId(driverId, rentId);
+        System.out.println(rowCount2);
+        return rowCount > 0;
+    }
+
+    @Override
+    public List<RentDetailsDTO> findByRentId(Long rentId) {
+        List<RentDetail> byRentId = rentDetailRepo.findByRentId(rentId);
+        return mapper.map(byRentId,new TypeToken<ArrayList<RentDetailsDTO>>(){}.getType());
+    }
+
 }

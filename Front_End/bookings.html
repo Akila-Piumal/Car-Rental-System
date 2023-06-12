@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings</title>
+    <link rel="icon" href="favIcon.png">
+    <meta name="keywords" content="Car Rental,Rent,Cars">
+    <meta name="description" content="Hi there! We are Easy Car Rentals. If you want a rent car please visit us..">
+    <meta name="author" content="Akila Piumal">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/e16bf5be25.css" crossorigin="anonymous">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navBarNew">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/rent.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav " id="navListInAdmin">
+        <li class="nav-item ">
+          <a class="nav-link navBarLinks px-4 fw-bolder"  href="adminDashBoard.html" >Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navBarLinks px-4 fw-bolder" href="adminCarManage.html">Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navBarLinks px-4 fw-bolder" href="adminDriverManage.html">Drivers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navBarLinks px-4 fw-bolder" aria-current="page" href="adminRentRequests.html" >Rent Request</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active navBarLinks px-4 fw-bolder" href="#" style="color: #ef6d48; font-size: 18px">Bookings</a>
+        </li>
+        <!--                <li class="nav-item">-->
+        <!--                    <a class="nav-link navBarLinks px-4 fw-bolder" href="#">Return</a>-->
+        <!--                </li>-->
+
+      </ul>
+    </div>
+    <div>
+      <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
+           class="d-inline-block align-text-top">
+    </div>
+    <small class="fw-bolder gradient-text " id="userName"></small>
+
+  </div>
+</nav>
+
+  <main id="mainOfAdminRentRequests" class="d-flex">
+      <section id="bookingsTableSec">
+          <section  class="mx-5 ">
+              <table id="tblBookingDetails" style="border-radius: 10px">
+                  <thead>
+                  <tr>
+                      <th>Rent ID</th>
+                      <th>Vehicle Number</th>
+                      <th>Customer Name</th>
+                      <th>Pickup Date</th>
+                      <th>Pickup Time</th>
+                      <th>Return Date</th>
+                      <th>Customer ID</th>
+                      <th>Loss Damage Waiver</th>
+                      <th>Total</th>
+                  </tr>
+                  </thead>
+
+                  <tbody id="tblRentRequestsBody">
+
+                  </tbody>
+              </table>
+          </section>
+      </section>
+
+<!--      <section id="lossDamageSlipSec">-->
+<!--          <div id="lossDamageSlipDiv">-->
+<!--              <div class="row gap-3 d-flex justify-content-center mt-3 px-2">-->
+<!--                  <div id="lossImgDiv" class="col-4 mt-4">-->
+<!--                      <h4 class="fs-6 gradient-text fw-bold mb-3">loss damage waiver slip</h4>-->
+<!--                      <div id="lossImg"></div>-->
+<!--                  </div>-->
+
+<!--                  <div id="nicImgDiv" class="col-4 mt-4">-->
+<!--                      <h4 class="fs-6 gradient-text fw-bold mb-3">nic image</h4>-->
+<!--                      <div id="nicImg"></div>-->
+<!--                  </div>-->
+<!--              </div>-->
+
+<!--              <div class="row d-flex justify-content-around mt-5">-->
+<!--                  <form action="#" id="" class="d-flex px-1 justify-content-around row mt-3">-->
+<!--                      <div class="form-floating col-5">-->
+<!--                          <input class="form-control form-control-sm fw-bold" id="vehicleNo" type="text" readonly>-->
+<!--                          <label for="vehicleNo">Vehicle Number</label>-->
+<!--                      </div>-->
+<!--                      <div class="form-floating col-5">-->
+<!--                          <input class="form-control form-control-sm fw-bold" id="customerName" type="text" readonly>-->
+<!--                          <label for="customerName">customerName</label>-->
+<!--                      </div>-->
+<!--                      <div class="form-floating col-5 mt-3">-->
+<!--                          <input class="form-control form-control-sm fw-bold" id="driverId" type="text" readonly>-->
+<!--                          <label for="driverId">Driver Id</label>-->
+<!--                      </div>-->
+<!--                      <div class="form-floating col-5 mt-3">-->
+<!--                          &lt;!&ndash;                        <input class="form-control form-control-sm fw-bold" id="driverNames" type="text" readonly>&ndash;&gt;-->
+<!--                          <select class="form-select fw-bold" name="driverNames" id="driverNames"></select>-->
+<!--                          <label for="driverNames">Driver Name</label>-->
+<!--                      </div>-->
+<!--                  </form>-->
+<!--              </div>-->
+
+<!--              <div id="buttonDiv" class="row gap-5 d-flex justify-content-center mt-5">-->
+<!--                  <div class="col-5 d-flex justify-content-around">-->
+<!--                      <button class="btn fw-bolder " id="btnAccept">Accept</button>-->
+<!--                      <button class="btn fw-bolder" id="btnReject">Reject</button>-->
+<!--                  </div>-->
+<!--              </div>-->
+
+<!--          </div>-->
+<!--      </section>-->
+
+  </main>
+
+
+  <script src="assets/js/jquery-3.6.1.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/e16bf5be25.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+    window.onload = function () {
+        var loggedUser = sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+        $('#userName').text(userObject.name);
+    };
+
+    getAllRents();
+
+    function getAllRents(){
+        var rent;
+
+        $("#tblRentRequestsBody").empty();
+
+        $.ajax({
+            url: baseUrl+"rent",
+            success:function (resp){
+                rent=resp.data;
+
+                for (let c of resp.data) {
+                    let rentId = c.rentId;
+                    let pickupDate = c.pickUpDate;
+                    let pickupTime = c.pickUpTime;
+                    let returnDate = c.returnDate;
+                    let user = c.userId;
+                    let lossDamage = c.lossDamageWaiverPrice;
+                    let total = c.total;
+                    let cusName ;
+                    let vehicleNo;
+
+                    $.ajax({
+                        url: baseUrl + "user?id="+user,
+                        method: 'get',
+                        async:false,
+                        success: function (resp) {
+                            cusName=resp.data.name;
+                        },
+                        error: function (error) {
+                            var jsObject = JSON.parse(error.responseText);
+                            alert(jsObject.message);
+                        }
+                    });
+
+                    $.ajax({
+                        url: baseUrl+"rent?rentId="+rentId,
+                        method: 'get',
+                        async:false,
+                        success: function (resp) {
+                            vehicleNo=resp.data.rentDetail[0].carId;
+                        },
+                        error: function (error) {
+                            var jsObject = JSON.parse(error.responseText);
+                            alert(jsObject.message);
+                        }
+                    })
+
+                    if (c.status!="booked"){
+                        continue;
+                    }
+
+                    let row = "<tr><td>" + rentId + "</td><td>" + vehicleNo + "</td><td>" + cusName + "</td><td>" + pickupDate + "</td><td>" + pickupTime + "</td><td>" + returnDate + "</td><td>" + user + "</td><td>" + lossDamage + "</td><td>" + total + "</td></tr>";
+                    $("#tblRentRequestsBody").append(row);
+                }
+            },
+            error:function (){
+
+            }
+        })
+    }
+
+
+  </script>
+</body>
+</html>

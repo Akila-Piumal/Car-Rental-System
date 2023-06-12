@@ -46,5 +46,11 @@ public class RentController {
         ArrayList<RentDTO> allByCustomerId = service.getByCustomerId(userId);
         return new ResponseUtil("200","Success",allByCustomerId);
     }
+
+    @PutMapping(params = {"rentId","driverId"})
+    public ResponseUtil updateStatusAndDriver(Long rentId, String driverId){
+        boolean result = service.updateStatus("booked",rentId,driverId);
+        return new ResponseUtil("200","Success",null);
+    }
 }
 

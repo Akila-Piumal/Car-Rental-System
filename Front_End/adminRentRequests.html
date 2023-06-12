@@ -27,23 +27,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav " id="navListInAdmin">
                 <li class="nav-item ">
-                    <a class="nav-link border-end px-3"  href="adminDashBoard.html" >Dashboard</a>
+                    <a class="nav-link navBarLinks px-4 fw-bolder"  href="adminDashBoard.html" >Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-end px-3" href="adminCarManage.html">Cars</a>
+                    <a class="nav-link navBarLinks px-4 fw-bolder" href="adminCarManage.html">Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-end px-3" href="adminDriverManage.html">Drivers</a>
+                    <a class="nav-link navBarLinks px-4 fw-bolder" href="adminDriverManage.html">Drivers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active fw-bold border-end px-3" aria-current="page" href="adminRentRequests.html" style="color: #ef6d48">Rent Request</a>
+                    <a class="nav-link active navBarLinks px-4 fw-bolder" aria-current="page" href="adminRentRequests.html" style="color: #ef6d48">Rent Request</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-end px-3" href="#">Bookings</a>
+                    <a class="nav-link navBarLinks px-4 fw-bolder" href="bookings.html">Bookings</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="#">Return</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link navBarLinks px-4 fw-bolder" href="#">Return</a>-->
+<!--                </li>-->
 
             </ul>
         </div>
@@ -51,7 +51,7 @@
             <img src="assets/img/21-avatar-lineal.gif" alt="Logo" width="40" height="40"
                  class="d-inline-block align-text-top">
         </div>
-        <small class="text-white text-muted" id="userName"></small>
+        <small class="fw-bolder gradient-text " id="userName"></small>
 
     </div>
 </nav>
@@ -60,7 +60,7 @@
 
     <section id="requestsTableSec">
         <section  class="mx-3">
-            <table id="tblCarDetails">
+            <table id="tblAdminRentDetails" style="border-radius: 10px">
                 <thead>
                 <tr>
                     <th>Rent ID</th>
@@ -82,54 +82,44 @@
 
     <section id="lossDamageSlipSec">
         <div id="lossDamageSlipDiv">
-            <div class="row gap-5 d-flex justify-content-center mt-2">
-                <div id="lossImgDiv" class="col-4">
-                    <h4 class="fs-6">loss damage waiver slip</h4>
-<!--                    <img src="assets/img/car2.jpg" alt="" id="lossImg">-->
+            <div class="row gap-3 d-flex justify-content-center mt-3 px-2">
+                <div id="lossImgDiv" class="col-4 mt-4">
+                    <h4 class="fs-6 gradient-text fw-bold mb-3">loss damage waiver slip</h4>
                     <div id="lossImg"></div>
                 </div>
 
-                <div id="nicImgDiv" class="col-4">
-                    <h4 class="fs-6">nic image</h4>
-<!--                    <img src="assets/img/car5.jpg" alt="" id="nicImg">-->
+                <div id="nicImgDiv" class="col-4 mt-4">
+                    <h4 class="fs-6 gradient-text fw-bold mb-3">nic image</h4>
                     <div id="nicImg"></div>
                 </div>
             </div>
 
-            <div class="row d-flex justify-content-center">
-                <div class="d-flex flex-column align-items-center" id="carAndDriverDiv">
-                    <div class="col-8 mt-1">
-                        <label for="vehicleNo" class="form-label fw-bold">Vehicle No.</label>
-                        <input type="text" class="form-control fw-bold" id="vehicleNo" readonly>
+            <div class="row d-flex justify-content-around mt-5">
+                <form action="#" id="" class="d-flex px-1 justify-content-around row mt-3">
+                    <div class="form-floating col-5">
+                        <input class="form-control form-control-sm fw-bold" id="vehicleNo" type="text" readonly>
+                        <label for="vehicleNo">Vehicle Number</label>
                     </div>
-
-                    <div class="col-8 mt-1">
-                        <label for="customerName" class="form-label fw-bold">Customer Name</label>
-                        <input type="text" class="form-control fw-bold" id="customerName" readonly>
+                    <div class="form-floating col-5">
+                        <input class="form-control form-control-sm fw-bold" id="customerName" type="text" readonly>
+                        <label for="customerName">customerName</label>
                     </div>
-
-                    <div class="col-8 mt-1">
-                        <label for="driverId" class="form-label fw-bold">Driver Id</label>
-                        <input type="text" class="form-control fw-bold" id="driverId" readonly>
+                    <div class="form-floating col-5 mt-3">
+                        <!--                        <input class="form-control form-control-sm fw-bold" id="driverNames" type="text" readonly>-->
+                        <select class="form-select fw-bold" name="driverNames" id="driverNames"></select>
+                        <label for="driverNames">Driver Name</label>
                     </div>
-
-<!--                    <div class="col-8 mt-1">-->
-<!--                        <label for="driverName" class="form-label fw-bold">Driver Name</label>-->
-<!--                        <input type="text" class="form-control fw-bold" id="driverName" readonly>-->
-<!--                    </div> -->
-
-                    <div class="col-8 mt-1">
-                        <label for="driverNames" class="form-label fw-bold">Driver Name</label>
-                        <select class="form-select" name="driverNames" id="driverNames"></select>
+                    <div class="form-floating col-5 mt-3">
+                        <input class="form-control form-control-sm fw-bold" id="driverId" type="text" readonly>
+                        <label for="driverId">Driver Id</label>
                     </div>
-
-                </div>
+                </form>
             </div>
 
-            <div id="buttonDiv" class="row gap-5 d-flex justify-content-center mt-4">
+            <div id="buttonDiv" class="row gap-5 d-flex justify-content-center mt-5">
                 <div class="col-5 d-flex justify-content-around">
-                    <button class="btn fw-bolder text-white" id="btnAccept">Accept</button>
-                    <button class="btn fw-bolder text-white" id="btnReject">Reject</button>
+                    <button class="btn fw-bolder " id="btnAccept">Accept</button>
+                    <button class="btn fw-bolder" id="btnReject">Reject</button>
                 </div>
             </div>
 
@@ -145,15 +135,21 @@
 
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+    let rentId;
+    let driverId;
 
     // when the window is loaded
     window.onload = function () {
+        var loggedUser = sessionStorage.getItem("user");
+        let userObject = JSON.parse(loggedUser);
+        $('#userName').text(userObject.name);
+
         $.ajax({
             url:baseUrl+"driver",
             success:function (resp){
                 for (const data of resp.data) {
                     $('#driverNames').append($('<option>',{
-                        value: data.name,
+                        value: data.licenceNo,
                         text: data.name
                     }));
                 }
@@ -164,19 +160,37 @@
         })
     }
 
+    // When Change the Driver name
+    $('#driverNames').change(function (){
+        const selectedValue = $(this).val();
+        driverId=selectedValue;
+        $('#driverId').val(selectedValue);
+    });
+
+    // When Click the accept button
     $('#btnAccept').click(function (){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: "Accepted",
-            showConfirmButton: false,
-            timer: 2000
+        $.ajax({
+            url:baseUrl+"rent?rentId="+rentId+"&driverId="+driverId,
+            method:'put',
+            success:function (resp){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: "Accepted",
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                location.reload(true);
+            },
+            error:function (error){
+                console.log("Error");
+            }
         })
     })
 
     $('#btnReject').click(function (){
         Swal.fire({
-            position: 'top-end',
+            position: 'center',
             icon: 'error',
             title: "Rejected",
             showConfirmButton: false,
@@ -204,6 +218,10 @@
                     let lossDamage = c.lossDamageWaiverPrice;
                     let total = c.total;
 
+                    if (c.status==="booked"){
+                        continue;
+                    }
+
                     let row = "<tr><td>" + rentId + "</td><td>" + pickupDate + "</td><td>" + pickupTime + "</td><td>" + returnDate + "</td><td>" + user + "</td><td>" + lossDamage + "</td><td>" + total + "</td></tr>";
                     $("#tblRentRequestsBody").append(row);
                 }
@@ -217,7 +235,7 @@
 
     function bindRowClickEvents(){
         $("#tblRentRequestsBody>tr").click(function () {
-            let rentId = $(this).children(":eq(0)").text();
+            rentId= $(this).children(":eq(0)").text();
             let customerId = $(this).children(":eq(4)").text();
 
             $.ajax({
@@ -241,20 +259,18 @@
                 url: baseUrl+"rent?rentId="+rentId,
                 method: 'get',
                 success: function (resp) {
-                    console.log(resp.data);
+                    console.log(resp.data.lossDamageImgPath);
                     $("#lossImg").css({
                         "background": `url(${resp.data.lossDamageImgPath})`,
                         "background-size": "cover"
                     });
                     $('#vehicleNo').val(resp.data.rentDetail[0].carId);
-                    $('#driverId').val(resp.data.rentDetail[0].driverId);
                 },
                 error: function (error) {
                     var jsObject = JSON.parse(error.responseText);
                     alert(jsObject.message);
                 }
             })
-
         });
     }
 </script>
