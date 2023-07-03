@@ -6,12 +6,46 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .links{
     text-decoration: none;
 }
 
-
-
+.fade-in{
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+.fade-in.appear{
+    opacity: 1;
+}
+.from-left{
+    transform: translateX(-50%);
+}
+.from-right{
+    transform: translateX(50%);
+}
+.from-left,.from-right{
+    transition:
+            opacity 250ms ease-in,
+            transform 400ms ease-in;
+    opacity: 0;
+}
+.from-left.appear,.from-right.appear{
+    transform: translateX(0);
+    opacity: 1;
+}
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+}
+.reveal.active{
+    transform: translateY(0px);
+    opacity: 1;
+}
 
 
 /*=====================  NAV BAR  ========================*/

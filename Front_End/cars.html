@@ -352,12 +352,11 @@
 
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
 
+    var loggedUser=sessionStorage.getItem("user");
+    let userObject = JSON.parse(loggedUser);
+
     window.onload=function (){
         $('#loginImageDiv').css('display','none');
-
-        var loggedUser=sessionStorage.getItem("user");
-        let userObject = JSON.parse(loggedUser);
-        console.log(userObject);
 
         // log wela innawanm
         if (userObject!=null){
@@ -574,7 +573,7 @@
                         <h4 id="priceLabel">` + car.dailyRate + ` <span>per day</span></h4>
                         <h1 class="d-none" id="hideh1">`+car.regNum+`</h1>
                         <a href="#" class="btn" id="btnViewCarDetails" onclick="(openCarDetails(this))">Car Details</a>
-                        <a href="rent.html" class="btn" id="btnRentOnCars" onclick="(saveCarDetailsTemp(this))">Rent Now</a>
+                        <a href="#" class="btn" id="btnRentOnCars" onclick="(saveCarDetailsTemp(this))">Rent Now</a>
                     </div>
         `);
         }
@@ -584,6 +583,12 @@
     function saveCarDetailsTemp(object){
         let regNum = $(object).parent().children(':eq(4)').text();
         sessionStorage.setItem("carNum",regNum);
+
+        if (userObject!=null){
+            window.location.href = "rent.html";
+        }else{
+            $('#loginModel').modal('show');
+        }
     }
 
     // Set Car Details to the Model

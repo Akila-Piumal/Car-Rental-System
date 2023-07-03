@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav " id="navListInIndex">
                 <li class="nav-item" style="width: 60px">
-                    <a class="nav-link navBarLinks active fw-bolder" aria-current="page" href="#" style="color: #ef6d48; font-size: 18px; border-bottom: 3px solid orange"">Home</a>
+                    <a class="nav-link navBarLinks active fw-bolder" aria-current="page" href="#" style="color: #ef6d48; font-size: 18px; border-bottom: 3px solid orange">Home</a>
                 </li>
                 <li class="nav-item" style="width: 76px;">
                     <a class="nav-link navBarLinks fw-bolder mx-5" href="cars.html">Cars</a>
                 </li>
                 <li class="nav-item" style="width: 117px">
-                    <a class="nav-link navBarLinks fw-bolder mx-5" href="#" style="width: 120px">Contact Us</a>
+                    <a class="nav-link navBarLinks fw-bolder mx-5" href="#secThree" style="width: 120px">Contact Us</a>
                 </li>
                 <li class="nav-item" style="width: 89px;">
                     <a class="nav-link navBarLinks fw-bolder mx-5" href="#" id="signInInIndex" data-bs-target="#loginModel" data-bs-toggle="modal" style="width: 120px">Sign In</a>
@@ -185,15 +185,15 @@
 
     <section id="mainSec">
         <div class="row container-fluid my-5 px-0 " id="textSec">
-            <div class="col-12 textDiv">
+            <div class="col-12 textDiv fade-in from-left slide-in">
                 <h1 class="fw-bolder homeText text-muted">Welcome To</h1>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 fade-in from-left slide-in">
                 <h1 class="fw-bolder homeText " id="easyCarText">Easy Car Rental</h1>
             </div>
 
-            <button type="button" class="rounded-5 border-0 text-white mt-5 fw-bold" id="btnBookNow" data-bs-target="#loginModel" data-bs-toggle="modal">Booking Now
+            <button type="button" class="fade-in rounded-5 border-0 text-white mt-5 fw-bold" id="btnBookNow" data-bs-target="#loginModel" data-bs-toggle="modal">Booking Now
             </button>
 
 <!--            <li class="nav-item" style="width: 72px;">-->
@@ -202,16 +202,16 @@
 
         </div>
 
-        <div class="" id="circleDiv"></div>
+        <div class="fade-in" id="circleDiv"></div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 fade-in">
                 <blockquote class="fw-bolder" id="upperText">
                     "I take to the open road,<span class="text-white"> healthy,</span>
                 </blockquote>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 fade-in">
                 <small class="fw-bold" id="lowerText">free, the world be<span class="text-white">fore me</span></small>
             </div>
         </div>
@@ -252,8 +252,8 @@
             </div>
         </div>
 
-        <div class="row container-fluid d-flex align-items-center mt-5 pt-5" id="iconRow">
-            <div class="col-4 d-flex justify-content-center align-items-center flex-column">
+        <div class="row container-fluid d-flex align-items-center mt-5 pt-5 reveal" id="iconRow">
+            <div class="from-left slide-in col-4 d-flex justify-content-center align-items-center flex-column">
                 <img src="assets/img/31-check-outline%20(1).gif" alt="" id="icon1">
                 <h3 class="text-white mt-3">Get verified instantly.</h3>
                 <P class="text-muted text-center mt-3">Registration is fast and easy! Just sign up with MyInfo for
@@ -265,7 +265,7 @@
                 <p class="text-muted text-center mt-3">We have free cancellation. So you can bag the best deal with
                     total flexibility to change your plans if you need to</p>
             </div>
-            <div class="col-4 d-flex justify-content-center align-items-center flex-column">
+            <div class="from-right slide-in col-4 d-flex justify-content-center align-items-center flex-column">
                 <img src="assets/img/33-speed-outline.gif" alt="" id="icon3">
                 <h3 class="text-white mt-3">Rent a car in minutes</h3>
                 <p class="text-muted text-center mt-3">With cars across 30+ locations, it’s possible to find and book a
@@ -344,6 +344,8 @@
 
 <script>
     let baseUrl = "http://localhost:8080/Back_End_war_exploded/";
+
+
 
     // Sign Up Process
     $('#btnSignUp').click(function () {
@@ -477,6 +479,63 @@
             }
         });
     });
+
+    // Scroll animation----------------------------------------------------------------------------------------
+
+
+
+    const faders=document.querySelectorAll(".fade-in");
+    const sliders=document.querySelectorAll(".slide-in")
+
+    const appearOptions ={
+        threshold:0,
+        rootMargin:"0px 0px -250px 0px"
+    }
+
+    const appearOnScroll= new IntersectionObserver
+    (function (
+        entries,
+        appearOnScroll
+    ){
+        entries.forEach(entry=>{
+            if (!entry.isIntersecting){
+                return;
+            }else{
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    },
+    appearOptions);
+
+    faders.forEach(fader=>{
+        appearOnScroll.observe(fader);
+    })
+
+    sliders.forEach(slider=>{
+        appearOnScroll.observe(slider);
+    })
+
+
+    window.addEventListener('scroll', reveal);
+
+    function reveal(){
+        var reveals=document.querySelectorAll('.reveal');
+
+        for (var i=0;i< reveals.length;i++){
+            var windowheight = window.innerHeight;
+            var revealtop = reveals[i].getBoundingClientRect().top;
+            var revealpoint =150;
+
+            if (revealtop<windowheight -revealpoint){
+                reveals[i].classList.add('active');
+            }else{
+                reveals[i].classList.remove('active');
+            }
+        }
+    }
+
+
 </script>
 
 </body>
